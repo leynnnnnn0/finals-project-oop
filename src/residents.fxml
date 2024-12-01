@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Resident">
-
-
-    <Label>Residents</Label>
+<Pane prefHeight="546.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Resident">
+   <children>
+      <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+         <children>
+            <Label layoutX="42.0" layoutY="38.0" text="Residents" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <MFXButton layoutX="742.0" layoutY="25.0" onAction="#addNewResident" style="-fx-background-color: #2D60FF;" text="Create New Resident" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MFXButton>
+            <MFXLegacyTableView layoutX="20.0" layoutY="73.0" prefHeight="450.0" prefWidth="762.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="70.0" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="546.0" prefWidth="819.0">
+         <children>
+            <Label text="Create New Resident" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="121.0" layoutY="104.0" prefHeight="270.0" prefWidth="759.0" style="-fx-hgap: 10; -fx-vgap: 10;" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="70.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <MFXTextField floatMode="BORDER" floatingText="First Name" prefHeight="49.0" prefWidth="387.0" />
+                  <MFXTextField floatMode="BORDER" floatingText="Middle Name" prefHeight="49.0" prefWidth="387.0" GridPane.columnIndex="1" />
+                  <MFXTextField floatMode="BORDER" floatingText="Last Name" prefHeight="49.0" prefWidth="375.0" GridPane.rowIndex="1" />
+                  <MFXTextField floatMode="BORDER" floatingText="First Name" prefHeight="49.0" prefWidth="375.0" />
+                  <MFXDatePicker floatMode="BORDER" floatingText="Date of birth" prefHeight="49.0" prefWidth="393.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <MFXComboBox fx:id="genderComboBox" floatMode="BORDER" floatingText="Sex" prefHeight="49.0" prefWidth="378.0" GridPane.rowIndex="2" />
+                  <MFXTextField floatMode="BORDER" floatingText="Contact Number" prefHeight="49.0" prefWidth="375.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <MFXTextField floatMode="BORDER" floatingText="Email" prefHeight="49.0" prefWidth="375.0" GridPane.rowIndex="3" />
+                  <MFXFilterComboBox fx:id="nationalityComboBox" floatMode="BORDER" floatingText="Nationality" prefHeight="40.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
 
 </Pane>

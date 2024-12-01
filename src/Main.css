@@ -7,8 +7,6 @@
 .sidebar-button {
     -fx-text-fill: #b1b1b1;
     -fx-font-weight: bold;
-}
+    -fx-font-size: 12px;
 
-.sidebar-button:selected {
-    -fx-text-fill: #2D60FF;
 }

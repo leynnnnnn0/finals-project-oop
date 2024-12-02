@@ -4,8 +4,8 @@
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +17,8 @@
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentController">
     <children>
-        <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+<!--      Index View-->
+        <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0">
             <children>
                 <Label layoutX="42.0" layoutY="38.0" text="Residents" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
@@ -29,9 +30,12 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </MFXButton>
-                <MFXLegacyTableView layoutX="20.0" layoutY="73.0" prefHeight="450.0" prefWidth="762.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="70.0" />
-            </children></AnchorPane>
-        <AnchorPane prefHeight="546.0" prefWidth="819.0">
+            <MFXTableView fx:id="table" layoutX="29.0" layoutY="75.0" prefHeight="438.0" prefWidth="752.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
+            </children>
+        </AnchorPane>
+
+<!--     Create View-->
+        <AnchorPane fx:id="residentCreatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
             <children>
                 <Label text="Create New ResidentController" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
@@ -50,7 +54,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <MFXTextField floatMode="BORDER" floatingText="Middle Name" prefHeight="49.0" prefWidth="387.0" GridPane.columnIndex="1" />
+                        <MFXTextField floatMode="ABOVE" floatingText="Middle Name" prefHeight="49.0" prefWidth="387.0" GridPane.columnIndex="1" />
                         <MFXTextField floatMode="BORDER" floatingText="Last Name" prefHeight="49.0" prefWidth="375.0" GridPane.rowIndex="1" />
                         <MFXDatePicker floatMode="BORDER" floatingText="Date of birth" prefHeight="49.0" prefWidth="393.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <MFXComboBox fx:id="genderComboBox" floatMode="BORDER" floatingText="Sex" prefHeight="49.0" prefWidth="378.0" GridPane.rowIndex="2" />

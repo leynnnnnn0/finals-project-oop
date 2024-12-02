@@ -1,5 +1,8 @@
 package database;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.lang.reflect.Field;
 import java.sql.*;
 
@@ -18,6 +21,38 @@ public abstract class Database<T> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public ObservableList<T> getAllRecords(Class<T> modelClass) {
+        ObservableList<T> records = FXCollections.observableArrayList();
+        try {
+            String query = "SELECT * FROM " + getDatabaseName();
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                T record = modelClass.getDeclaredConstructor().newInstance();
+
+                Field[] fields = modelClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    String fieldName = field.getName();
+
+                    try {
+                        Object value = rs.getObject(fieldName);
+                        field.set(record, value);
+                    } catch (SQLException e) {
+                        System.out.println("Could not set field " + fieldName + ": " + e.getMessage());
+                    }
+                }
+
+                records.add(record);
+            }
+        } catch (Exception e) {
+            System.out.println("Error fetching records: " + e.getMessage());
+        }
+        return records;
     }
 
 

@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Database<T> {
     private Connection connection = null;
@@ -56,16 +59,25 @@ public abstract class Database<T> {
     }
 
 
-    public boolean create(String[] fields, T model) {
+    public boolean create(T model) {
         try {
+            Class<?> modelClass = model.getClass();
+            Field[] declaredFields = modelClass.getDeclaredFields();
+
+            List<String> fieldNames = new ArrayList<>();
+            for (Field field : declaredFields) {
+                fieldNames.add(field.getName());
+            }
+
             String query = String.format(
                     "INSERT INTO %s (%s) VALUES (%s)",
                     getDatabaseName(),
-                    String.join(", ", fields),
-                    getPlaceholders(fields.length)
+                    String.join(", ", fieldNames),
+                    getPlaceholders(fieldNames.size())
             );
+
             preparedStatement = connection.prepareStatement(query);
-            setModelValues(preparedStatement, model, fields);
+            setModelValues(preparedStatement, model, fieldNames.toArray(new String[0]));
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;

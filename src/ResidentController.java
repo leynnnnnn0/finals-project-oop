@@ -1,18 +1,18 @@
-import io.github.palexdev.materialfx.controls.MFXComboBox;
-import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
-import io.github.palexdev.materialfx.controls.MFXTableColumn;
-import io.github.palexdev.materialfx.controls.MFXTableView;
+import io.github.palexdev.materialfx.controls.*;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Resident;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class ResidentController implements Initializable {
@@ -24,6 +24,13 @@ public class ResidentController implements Initializable {
 
     public TextField firstName;
     public MFXTableView<Resident> table;
+    public TextField middleName;
+    public TextField email;
+    public MFXDatePicker dateOfBirth;
+    public TextField contactNumber;
+
+    public TextArea completeAddress;
+    public TextField lastName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,12 +49,17 @@ public class ResidentController implements Initializable {
 
         setupTable();
 
-        Resident residentModel = new Resident();
-        ObservableList<Resident> residentData = residentModel.getAllRecords(Resident.class);
-        table.setItems(residentData);
+        setTableData();
 
 
         table.autosizeColumnsOnInitialization();
+    }
+
+    private void setTableData()
+    {
+        Resident residentModel = new Resident();
+        ObservableList<Resident> residentData = residentModel.getAllRecords(Resident.class);
+        table.setItems(residentData);
     }
 
     public void openCreateNewResidentPage(ActionEvent actionEvent) throws IOException {
@@ -56,11 +68,23 @@ public class ResidentController implements Initializable {
     }
 
     public void createNewResident(ActionEvent actionEvent) {
-        System.out.println("First Name field: " + firstName);
-        System.out.println("Is First Name field null? " + (firstName == null));
-        if (firstName != null) {
-            System.out.println("First Name text: " + firstName.getText());
-        }
+        Resident newResident = new Resident(
+                firstName.getText(),
+                middleName.getText(),
+                lastName.getText(),
+                Date.valueOf(dateOfBirth.getValue()),
+                genderComboBox.getSelectedItem(),
+                contactNumber.getText(),
+                email.getText(),
+                nationalityComboBox.getSelectedItem(),
+                completeAddress.getText()
+        );
+
+        newResident.create(newResident);
+        clearInputFields();
+        setTableData();
+        residentIndexPane.setVisible(true);
+        residentCreatePane.setVisible(false);
 
     }
 
@@ -85,6 +109,18 @@ public class ResidentController implements Initializable {
 
 
 
+    }
+
+    private void clearInputFields() {
+        firstName.clear();
+        middleName.clear();
+        lastName.clear();
+        dateOfBirth.setValue(null);
+        email.clear();
+        genderComboBox.setValue(null);
+        contactNumber.clear();
+        nationalityComboBox.setValue(null);
+        completeAddress.clear();
     }
 
 }

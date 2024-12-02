@@ -27,5 +27,8 @@ public class Test {
                 "New York, Cubao");
 
         resident.delete(1);
+        resident.update(fields, resident, "1");
+        resident.create(resident);
+
     }
 }

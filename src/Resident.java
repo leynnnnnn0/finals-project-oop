@@ -1,6 +1,8 @@
+import database.Database;
+
 import java.util.Date;
 
-public class Resident {
+public class Resident extends Database<Resident> {
     private String first_name;
     private String middle_name;
     private String last_name;
@@ -24,5 +26,8 @@ public class Resident {
     }
 
 
-
+    @Override
+    protected String getDatabaseName() {
+        return "residents";
+    }
 }

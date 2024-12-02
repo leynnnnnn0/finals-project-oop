@@ -16,18 +16,17 @@ public class Test {
                 "nationality",
                 "complete_address"
         };
-        Database<Resident> database = new Database<>();
 
-        Resident res = new Resident("Jashreil",
+        Resident resident = new Resident("Jane",
                 "",
-                "Almoguerra",
-                Date.valueOf("2004-07-15"),
-                "Femela",
-                "09323232",
-                "jashreil@gmai.com",
-                "Filipino",
-                "Paranaque, Manila");
+                "Smith",
+                Date.valueOf("2004-09-3"),
+                "Female",
+                "09321323143",
+                "jane@gmai.com",
+                "American",
+                "New York, Cubao");
 
-        System.out.println(database.tableName("residents").create(fields, res));
+        System.out.println(resident.create(fields, resident));
     }
 }

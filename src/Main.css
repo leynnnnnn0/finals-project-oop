@@ -8,5 +8,9 @@
     -fx-text-fill: #b1b1b1;
     -fx-font-weight: bold;
     -fx-font-size: 12px;
+}
 
+.primary-button {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2d60ff;
 }

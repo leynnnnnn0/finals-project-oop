@@ -27,6 +27,6 @@ public class Test {
                 "American",
                 "New York, Cubao");
 
-        System.out.println(resident.create(fields, resident));
+        resident.delete(1);
     }
 }

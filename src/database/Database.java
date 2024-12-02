@@ -40,6 +40,18 @@ public abstract class Database<T> {
         }
     }
 
+    public boolean delete(int id){
+        try{
+            String query = String.format("DELETE FROM %s WHERE id = %d", getDatabaseName(), id);
+            preparedStatement = connection.prepareStatement(query);
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public boolean update(String[] fields, T model, String id) {
         try {
             String query = String.format(

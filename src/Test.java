@@ -22,13 +22,14 @@ public class Test {
                 Date.valueOf("2004-09-3"),
                 "Female",
                 "09321323143",
-                "jane@gmai.com",
+                "janfdfe@gmai.com",
                 "American",
                 "New York, Cubao");
+        resident.create();
 
-        resident.delete(1);
-        resident.update(fields, resident, "1");
-        resident.create(resident);
+//        resident.delete(1);
+//        resident.update(fields, resident, "1");
+
 
     }
 }

@@ -80,7 +80,7 @@ public class ResidentController implements Initializable {
                 completeAddress.getText()
         );
 
-        newResident.create(newResident);
+        newResident.create();
         clearInputFields();
         setTableData();
         residentIndexPane.setVisible(true);

@@ -59,9 +59,9 @@ public abstract class Database<T> {
     }
 
 
-    public boolean create(T model) {
+    public boolean create() {
         try {
-            Class<?> modelClass = model.getClass();
+            Class<?> modelClass = this.getClass();
             Field[] declaredFields = modelClass.getDeclaredFields();
 
             List<String> fieldNames = new ArrayList<>();
@@ -77,7 +77,7 @@ public abstract class Database<T> {
             );
 
             preparedStatement = connection.prepareStatement(query);
-            setModelValues(preparedStatement, model, fieldNames.toArray(new String[0]));
+            setModelValues(preparedStatement, fieldNames.toArray(new String[0]));
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
@@ -99,7 +99,7 @@ public abstract class Database<T> {
         }
     }
 
-    public boolean update(String[] fields, T model, String id) {
+    public boolean update(String[] fields, String id) {
         try {
             String query = String.format(
                     "UPDATE %s SET %s WHERE id = %s",
@@ -110,7 +110,7 @@ public abstract class Database<T> {
 
             preparedStatement = connection.prepareStatement(query);
 
-            setModelValues(preparedStatement, model, fields);
+            setModelValues(preparedStatement, fields);
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
@@ -135,16 +135,16 @@ public abstract class Database<T> {
         return String.join(", ", java.util.Collections.nCopies(count, "?"));
     }
 
-    private void setModelValues(PreparedStatement stmt, T model, String[] fields)
+    private void setModelValues(PreparedStatement stmt, String[] fields)
             throws SQLException, IllegalAccessException {
-        Class<?> modelClass = model.getClass();
+        Class<?> modelClass = this.getClass();
 
         for (int i = 0; i < fields.length; i++) {
             try {
                 Field field = modelClass.getDeclaredField(fields[i]);
                 field.setAccessible(true);
 
-                Object value = field.get(model);
+                Object value = field.get(this);
                 stmt.setObject(i + 1, value);
             } catch (NoSuchFieldException e) {
                 System.err.println("Field not found: " + fields[i]);
@@ -152,5 +152,4 @@ public abstract class Database<T> {
             }
         }
     }
-
 }

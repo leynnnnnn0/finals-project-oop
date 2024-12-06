@@ -67,7 +67,7 @@
                 <TextArea fx:id="completeAddress" layoutX="20.0" layoutY="403.0" prefHeight="75.0" prefWidth="759.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="403.0" />
                 <Label layoutX="20.0" layoutY="374.0" text="Complete Address" />
                 <MFXButton layoutX="724.0" layoutY="493.0" onAction="#createNewResident" styleClass="primary-button" text="Create" />
-            <MFXButton layoutX="662.0" layoutY="493.0" text="Cancel" />
+            <MFXButton onAction="#backToIndex" layoutX="662.0" layoutY="493.0" text="Cancel" />
             </children>
         </AnchorPane>
     </children>

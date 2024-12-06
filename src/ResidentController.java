@@ -123,4 +123,8 @@ public class ResidentController implements Initializable {
         completeAddress.clear();
     }
 
+    public void backToIndex(ActionEvent actionEvent) {
+        residentIndexPane.setVisible(true);
+        residentCreatePane.setVisible(false);
+    }
 }

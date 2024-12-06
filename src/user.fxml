@@ -5,11 +5,26 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css"  xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="User">
-
-    <Label>Users</Label>
+<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="UserController">
+    <AnchorPane fx:id="usersIndexPane" prefHeight="546.0" prefWidth="819.0">
+        <children>
+            <Label layoutX="42.0" layoutY="38.0" text="Users" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewUserPage" style="-fx-background-color: #2D60FF;" text="Create New User" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </MFXButton>
+            <MFXTableView fx:id="table" layoutX="29.0" layoutY="75.0" prefHeight="438.0" prefWidth="752.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
+        </children>
+    </AnchorPane>
 
 </Pane>

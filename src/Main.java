@@ -8,28 +8,30 @@ import javafx.stage.StageStyle;
 import java.util.Objects;
 
 public class Main extends Application {
-    double x,y;
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("app.fxml")));
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         root.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
 
         root.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - x);
-            primaryStage.setY(event.getSceneY() - y);
+            primaryStage.setX(event.getScreenX() - xOffset);
+            primaryStage.setY(event.getScreenY() - yOffset);
         });
 
-        primaryStage.setScene(new Scene(root, 1000, 600));
+        Scene scene = new Scene(root, 1000, 600);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
 }

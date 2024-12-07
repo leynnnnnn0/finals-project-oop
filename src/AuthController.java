@@ -18,13 +18,16 @@ public class AuthController implements Initializable {
 
     }
 
-    public boolean login()
-    {
+    public void login() {
         User user = new User();
         user.setEmail(email.getText());
         user.setPasscode(password.getText());
-        System.out.println(user.auth());;
-        return true;
+        try{
+            Main.showMainScreen();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
 

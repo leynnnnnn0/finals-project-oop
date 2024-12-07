@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +14,10 @@ import model.Resident;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ResidentController implements Initializable {
@@ -32,8 +37,23 @@ public class ResidentController implements Initializable {
     public TextArea completeAddress;
     public TextField lastName;
 
+    public Label firstNameError;
+    public Label middleNameError;
+    public Label lastNameError;
+    public Label dateOfBirthError;
+    public Label sexError;
+    public Label contactNumberError;
+    public Label emailError;
+    public Label nationalityError;
+    public Label completeAddressError;
+
+    public Map<String, String> errors;
+    public int errorsCounts = 0;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        errors = new HashMap<>();
         ObservableList<String> genderOptions = FXCollections.observableArrayList();
         genderOptions.addAll(
                 "Male",
@@ -68,6 +88,10 @@ public class ResidentController implements Initializable {
     }
 
     public void createNewResident(ActionEvent actionEvent) {
+        validateInputs();
+        if(errorsCounts > 0){
+            return;
+        }
         Resident newResident = new Resident(
                 firstName.getText(),
                 middleName.getText(),
@@ -85,7 +109,6 @@ public class ResidentController implements Initializable {
         setTableData();
         residentIndexPane.setVisible(true);
         residentCreatePane.setVisible(false);
-
     }
 
     private void setupTable() {
@@ -123,8 +146,78 @@ public class ResidentController implements Initializable {
         completeAddress.clear();
     }
 
+    private void clearError() {
+        errorsCounts = 0;
+        firstNameError.setText("");
+        middleNameError.setText("");
+        lastNameError.setText("");
+        contactNumberError.setText("");
+        dateOfBirthError.setText("");
+        sexError.setText("");
+        emailError.setText("");
+        nationalityError.setText("");
+        completeAddressError.setText("");
+
+    }
+
+    private void validateInputs()
+    {
+        clearError();
+        if(firstName.getText().isEmpty())
+            setError(firstNameError, "First name is required");
+
+        if(!firstName.getText().isEmpty() && firstName.getText().matches("^[a-zA-Z]+$"))
+            setError(firstNameError, "First name should only contain letters");
+
+        if(lastName.getText().isEmpty())
+            setError(lastNameError, "Last name is required");
+
+        if(!lastName.getText().isEmpty() && lastName.getText().matches("^[a-zA-Z]+$"))
+            setError(firstNameError, "Last name should only contain letters");
+
+        if(!middleName.getText().isEmpty() && middleName.getText().matches("^[a-zA-Z]+$"))
+            setError(firstNameError, "Middle name should only contain letters");
+
+        if(dateOfBirth.getText().isEmpty())
+            setError(dateOfBirthError, "Date of birth field is required");
+
+        if(!dateOfBirth.getText().isEmpty()){
+            String dateInput = dateOfBirth.getText();
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate selectedDate = LocalDate.parse(dateInput, formatter);
+            if(selectedDate.isAfter(today)){
+                setError(dateOfBirthError, "Date of birth should be at least today");
+            }
+        }
+
+        if(genderComboBox.getSelectedItem() == null)
+            setError(sexError, "Gender is required");
+
+        if(contactNumber.getText().isEmpty())
+            setError(contactNumberError,"Contact number field is required");
+
+        if(!contactNumber.getText().isEmpty() && contactNumber.getText().matches("^09\\d{9}$"))
+            setError(contactNumberError,"Invalid phone number format");
+
+        if(email.getText().isEmpty())
+            setError(emailError,"Email field is required");
+
+        if(nationalityComboBox.getSelectedItem() == null)
+            setError(nationalityError,"Nationality is required");
+
+        if(completeAddress.getText().isEmpty())
+            setError(completeAddressError, "Complete address is required");
+    }
+
     public void backToIndex(ActionEvent actionEvent) {
         residentIndexPane.setVisible(true);
         residentCreatePane.setVisible(false);
     }
+
+    public void setError(Label label, String message){
+        errorsCounts++;
+        label.setText(message);
+    }
+
 }

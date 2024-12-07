@@ -29,8 +29,18 @@
                   </Label>
                   <Label layoutX="64.0" layoutY="117.0" text="Hey, Enter your details to get sign in to your account" />
                   <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email" layoutX="32.0" layoutY="170.0" prefHeight="48.0" prefWidth="353.0" />
-                  <MFXButton  layoutX="32.0" layoutY="341.0" onAction="#login" prefHeight="35.0" prefWidth="353.0" styleClass="primary-button" text="Button" />
-                  <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password" layoutX="32.0" layoutY="252.0" prefHeight="48.0" prefWidth="353.0" />
+                  <MFXButton layoutX="32.0" layoutY="341.0" onAction="#login" prefHeight="35.0" prefWidth="353.0" styleClass="primary-button" text="Login" />
+                  <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password" layoutX="32.0" layoutY="264.0" prefHeight="48.0" prefWidth="353.0" />
+                  <Label fx:id="loginErrorMessage" layoutX="32.0" layoutY="218.0" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="passwordError" layoutX="32.0" layoutY="313.0" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </items>

@@ -1,4 +1,5 @@
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ public class AppController implements Initializable {
     public MFXButton homeSidebarText;
     public MFXButton residentsSidebarText;
     public MFXButton usersSidebarText;
+    public MFXButton fileGenerationCenterText;
     @FXML
     private Label exit;
 
@@ -74,6 +76,14 @@ public class AppController implements Initializable {
     }
 
 
+    public void logout(ActionEvent actionEvent) {
+        try{
+            Main.showLoginScreen();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 
-
+    public void fileGenerationCenter(ActionEvent actionEvent) {
+    }
 }

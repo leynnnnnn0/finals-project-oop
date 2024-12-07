@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -34,9 +35,16 @@ public class Main extends Application {
     }
 
     public static void showMainScreen() throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("app.fxml")));
+        changeScene("app.fxml");
+    }
 
-        // Use the existing scene's width and height
+    public static void showLoginScreen() throws Exception {
+        changeScene("login.fxml");
+    }
+
+    public static void changeScene(String name) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(name)));
+
         Scene existingScene = primaryStage.getScene();
         double width = existingScene != null ? existingScene.getWidth() : 1000;
         double height = existingScene != null ? existingScene.getHeight() : 600;

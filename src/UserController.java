@@ -51,12 +51,14 @@ public class UserController implements Initializable {
         MFXTableColumn<User> fullNameColumn = new MFXTableColumn<>("Full Name");
         MFXTableColumn<User> phoneNumberColumn = new MFXTableColumn<>("Contact Number");
         MFXTableColumn<User> emailColumn = new MFXTableColumn<>("Email");
+        MFXTableColumn<User> roleColumn = new MFXTableColumn<>("Role");
 
         fullNameColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(User::getFullName));
         phoneNumberColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(User::getPhoneNumber));
         emailColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(User::getEmail));
+        roleColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(User::getRole));
 
-        table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn);
+        table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn, roleColumn);
 
     }
 
@@ -73,6 +75,13 @@ public class UserController implements Initializable {
     }
 
     public void createNewUser(ActionEvent actionEvent) {
+        boolean is_admin = rolesComboBox.getSelectedItem().equals("Admin");
+        User user = new User(firstName.getText(), middleName.getText(), lastName.getText(), contactNumber.getText(), email.getText(), is_admin);
+        user.create();
+        setTableData();
+        usersIndexPane.setVisible(true);
+        userCreatePane.setVisible(false);
+
 
     }
 }

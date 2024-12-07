@@ -20,6 +20,7 @@ public class User extends Database<User> {
         this.phone_number = phone_number;
         this.email = email;
         this.is_admin = is_admin;
+        this.passcode = getLastName() + getPhoneNumber();
     }
 
     @Override
@@ -56,6 +57,10 @@ public class User extends Database<User> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole(){
+        return is_admin ? "Admin" : "Sub Admin";
     }
 
     public String getPhoneNumber() {

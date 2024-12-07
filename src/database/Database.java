@@ -14,6 +14,14 @@ public abstract class Database<T> {
     private PreparedStatement preparedStatement = null;
     protected abstract String getDatabaseName();
 
+    public PreparedStatement getPreparedStatement() {
+        return preparedStatement;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
     public Database() {
         try {
             connection = DriverManager.getConnection(

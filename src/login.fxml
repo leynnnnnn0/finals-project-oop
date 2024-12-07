@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AuthController">
+   <children>
+      <SplitPane dividerPositions="0.5479302832244008" layoutX="195.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <items>
+            <ImageView fitHeight="602.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/loginBanner.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="406.0">
+               <children>
+                  <Label layoutX="146.0" layoutY="82.0" text="User Login" textFill="#5e24c3" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="82.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="64.0" layoutY="117.0" text="Hey, Enter your details to get sign in to your account" />
+                  <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email" layoutX="32.0" layoutY="170.0" prefHeight="48.0" prefWidth="353.0" />
+                  <MFXButton  layoutX="32.0" layoutY="341.0" onAction="#login" prefHeight="35.0" prefWidth="353.0" styleClass="primary-button" text="Button" />
+                  <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password" layoutX="32.0" layoutY="252.0" prefHeight="48.0" prefWidth="353.0" />
+               </children>
+            </Pane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

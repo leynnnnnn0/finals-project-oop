@@ -160,54 +160,69 @@ public class ResidentController implements Initializable {
 
     }
 
-    private void validateInputs()
-    {
+    private void validateInputs() {
         clearError();
-        if(firstName.getText().isEmpty())
+
+        if (firstName.getText().isEmpty()) {
             setError(firstNameError, "First name is required");
+        } else if (!firstName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            setError(firstNameError, "First name must be 2-50 characters, using only letters and spaces");
+        }
 
-        if(!firstName.getText().isEmpty() && firstName.getText().matches("^[a-zA-Z]+$"))
-            setError(firstNameError, "First name should only contain letters");
-
-        if(lastName.getText().isEmpty())
-            setError(lastNameError, "Last name is required");
-
-        if(!lastName.getText().isEmpty() && lastName.getText().matches("^[a-zA-Z]+$"))
-            setError(firstNameError, "Last name should only contain letters");
-
-        if(!middleName.getText().isEmpty() && middleName.getText().matches("^[a-zA-Z]+$"))
-            setError(firstNameError, "Middle name should only contain letters");
-
-        if(dateOfBirth.getText().isEmpty())
-            setError(dateOfBirthError, "Date of birth field is required");
-
-        if(!dateOfBirth.getText().isEmpty()){
-            String dateInput = dateOfBirth.getText();
-            LocalDate today = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate selectedDate = LocalDate.parse(dateInput, formatter);
-            if(selectedDate.isAfter(today)){
-                setError(dateOfBirthError, "Date of birth should be at least today");
+        if (!middleName.getText().isEmpty()) {
+            if (!middleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
+                setError(middleNameError, "Middle name must be 1-50 characters, using only letters and spaces");
             }
         }
 
-        if(genderComboBox.getSelectedItem() == null)
+        if (lastName.getText().isEmpty()) {
+            setError(lastNameError, "Last name is required");
+        } else if (!lastName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            setError(lastNameError, "Last name must be 2-50 characters, using only letters and spaces");
+        }
+
+        if (dateOfBirth.getValue() == null) {
+            setError(dateOfBirthError, "Date of birth is required");
+        } else {
+            LocalDate selectedDate = dateOfBirth.getValue();
+            LocalDate today = LocalDate.now();
+            LocalDate minValidDate = today.minusYears(120);
+            LocalDate maxValidDate = today.minusYears(18); // Assuming minimum age is 18
+
+            if (selectedDate.isAfter(today)) {
+                setError(dateOfBirthError, "Date of birth cannot be in the future");
+            } else if (selectedDate.isBefore(minValidDate)) {
+                setError(dateOfBirthError, "Date of birth seems unrealistic (max 120 years old)");
+            } else if (selectedDate.isAfter(maxValidDate)) {
+                setError(dateOfBirthError, "You must be at least 18 years old");
+            }
+        }
+
+        if (genderComboBox.getSelectedItem() == null) {
             setError(sexError, "Gender is required");
+        }
 
-        if(contactNumber.getText().isEmpty())
-            setError(contactNumberError,"Contact number field is required");
+        if (contactNumber.getText().isEmpty()) {
+            setError(contactNumberError, "Contact number is required");
+        } else if (!contactNumber.getText().matches("^(09|\\+639)\\d{9}$")) {
+            setError(contactNumberError, "Invalid phone number. Must start with 09 or +639 and be 10-12 digits");
+        }
 
-        if(!contactNumber.getText().isEmpty() && contactNumber.getText().matches("^09\\d{9}$"))
-            setError(contactNumberError,"Invalid phone number format");
+        if (email.getText().isEmpty()) {
+            setError(emailError, "Email is required");
+        } else if (!email.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            setError(emailError, "Invalid email format");
+        }
 
-        if(email.getText().isEmpty())
-            setError(emailError,"Email field is required");
+        if (nationalityComboBox.getSelectedItem() == null) {
+            setError(nationalityError, "Nationality is required");
+        }
 
-        if(nationalityComboBox.getSelectedItem() == null)
-            setError(nationalityError,"Nationality is required");
-
-        if(completeAddress.getText().isEmpty())
+        if (completeAddress.getText().isEmpty()) {
             setError(completeAddressError, "Complete address is required");
+        } else if (completeAddress.getText().length() < 10 || completeAddress.getText().length() > 200) {
+            setError(completeAddressError, "Address must be between 10 and 200 characters");
+        }
     }
 
     public void backToIndex(ActionEvent actionEvent) {

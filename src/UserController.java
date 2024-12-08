@@ -7,12 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import model.Resident;
 import model.User;
 
 public class UserController implements Initializable {
@@ -25,6 +25,12 @@ public class UserController implements Initializable {
     public MFXTextField middleName;
     public MFXTextField firstName;
     public MFXTextField lastName;
+    public Label roleError;
+    public Label emailError;
+    public Label phoneNumberError;
+    public Label lastNameError;
+    public Label middleNameError;
+    public Label firstNameError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -50,7 +50,7 @@
                 </rowConstraints>
                 <children>
                     <MFXTextField fx:id="firstName" floatMode="ABOVE" floatingText="First Name" prefHeight="35.0" prefWidth="388.0" />
-               <Label text="firstNameError" textFill="RED">
+               <Label fx:id="firstNameError" textFill="RED">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>
@@ -59,7 +59,7 @@
                   </font>
                </Label>
                     <MFXTextField fx:id="middleName" floatMode="ABOVE" floatingText="Middle Name" prefHeight="35.0" prefWidth="387.0" GridPane.columnIndex="1" />
-               <Label text="middleNameError" textFill="RED" GridPane.columnIndex="1">
+               <Label fx:id="middleNameError" textFill="RED" GridPane.columnIndex="1">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>
@@ -68,7 +68,7 @@
                   </font>
                </Label>
                     <MFXTextField fx:id="lastName" floatMode="ABOVE" floatingText="Last Name" prefHeight="35.0" prefWidth="375.0" GridPane.rowIndex="1" />
-               <Label text="lastNameError" textFill="RED" GridPane.rowIndex="1">
+               <Label fx:id="lastNameError" textFill="RED" GridPane.rowIndex="1">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>
@@ -77,7 +77,7 @@
                   </font>
                </Label>
                     <MFXTextField fx:id="contactNumber" floatMode="ABOVE" floatingText="Phone Number" prefHeight="35.0" prefWidth="375.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Label text="phoneNumberError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <Label fx:id="phoneNumberError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>
@@ -86,7 +86,7 @@
                   </font>
                </Label>
                     <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email" prefHeight="35.0" prefWidth="375.0" GridPane.rowIndex="2" />
-               <Label text="emailError" textFill="RED" GridPane.rowIndex="2">
+               <Label fx:id="emailError" textFill="RED" GridPane.rowIndex="2">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>
@@ -95,7 +95,7 @@
                   </font>
                </Label>
                     <MFXFilterComboBox fx:id="rolesComboBox" floatMode="ABOVE" floatingText="Role" prefHeight="40.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               <Label text="roleError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <Label fx:id="roleError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2">
                   <GridPane.margin>
                      <Insets left="10.0" top="50.0" />
                   </GridPane.margin>

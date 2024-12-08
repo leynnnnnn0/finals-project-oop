@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -166,19 +165,19 @@ public class ResidentController implements Initializable {
         if (firstName.getText().isEmpty()) {
             setError(firstNameError, "First name is required");
         } else if (!firstName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
-            setError(firstNameError, "First name must be 2-50 characters, using only letters and spaces");
+            setError(firstNameError, "First name must be 2-50 characters, using only letters");
         }
 
         if (!middleName.getText().isEmpty()) {
             if (!middleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
-                setError(middleNameError, "Middle name must be 1-50 characters, using only letters and spaces");
+                setError(middleNameError, "Middle name must be 1-50 characters, using only letters");
             }
         }
 
         if (lastName.getText().isEmpty()) {
             setError(lastNameError, "Last name is required");
         } else if (!lastName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
-            setError(lastNameError, "Last name must be 2-50 characters, using only letters and spaces");
+            setError(lastNameError, "Last name must be 2-50 characters, using only letters");
         }
 
         if (dateOfBirth.getValue() == null) {
@@ -187,7 +186,7 @@ public class ResidentController implements Initializable {
             LocalDate selectedDate = dateOfBirth.getValue();
             LocalDate today = LocalDate.now();
             LocalDate minValidDate = today.minusYears(120);
-            LocalDate maxValidDate = today.minusYears(18); // Assuming minimum age is 18
+            LocalDate maxValidDate = today.minusYears(0);
 
             if (selectedDate.isAfter(today)) {
                 setError(dateOfBirthError, "Date of birth cannot be in the future");

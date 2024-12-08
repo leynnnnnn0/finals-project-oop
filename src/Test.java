@@ -1,34 +1,32 @@
-import model.Resident;
-
-import java.sql.Date;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 public class Test {
     public static void main(String[] args) {
-        String[] fields = {
-                "first_name",
-                "last_name",
-                "middle_name",
-                "date_of_birth",
-                "sex",
-                "contact_number",
-                "email",
-                "nationality",
-                "complete_address"
-        };
+        try {
+            Document document = new Document();
 
-        Resident resident = new Resident("Jane",
-                "",
-                "Smith",
-                Date.valueOf("2004-09-3"),
-                "Female",
-                "09321323143",
-                "janfdfe@gmai.com",
-                "American",
-                "New York, Cubao");
-        resident.create();
+            String pdfPath = "UserReport.pdf";
 
-//        resident.delete(1);
-//        resident.update(fields, resident, "1");
+            PdfWriter.getInstance(document, new FileOutputStream(pdfPath));
+
+            document.open();
+
+            document.add(new Paragraph("User Report"));
+            document.add(new Paragraph("Generated on: " + new java.util.Date()));
+
+
+
+
+            document.close();
+
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
 
 
     }

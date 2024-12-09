@@ -11,12 +11,12 @@
    <children>
       <AnchorPane prefHeight="546.0" prefWidth="819.0">
           <Label styleClass="page-title" text="Generate Barangay Certificate" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-         <MFXTextField floatMode="ABOVE" floatingText="Full Name" layoutX="20.0" layoutY="94.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="40.0" />
-         <TextArea layoutX="28.0" layoutY="193.0" prefHeight="99.0" prefWidth="751.0" />
+         <MFXTextField fx:id="fullName" floatMode="ABOVE" floatingText="Full Name" layoutX="20.0" layoutY="94.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="40.0" />
+         <TextArea fx:id="completeAddress" layoutX="28.0" layoutY="193.0" prefHeight="99.0" prefWidth="751.0" />
          <Label layoutX="37.0" layoutY="168.0" text="Complete Address" />
-         <TextArea layoutX="28.0" layoutY="342.0" prefHeight="99.0" prefWidth="751.0" />
+         <TextArea fx:id="additionalCertification" layoutX="28.0" layoutY="342.0" prefHeight="99.0" prefWidth="751.0" />
          <Label layoutX="37.0" layoutY="317.0" text="Additional Certification" />
-         <MFXButton layoutX="724.0" layoutY="481.0" AnchorPane.bottomAnchor="20.0" styleClass="primary-button"/>
+         <MFXButton layoutX="724.0" layoutY="481.0" onAction="#generateBarangayCertificate" styleClass="primary-button" text="Generate" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0" />
       </AnchorPane>
    </children>
 </Pane>

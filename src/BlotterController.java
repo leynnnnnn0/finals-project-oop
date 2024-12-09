@@ -21,6 +21,7 @@ public class BlotterController implements Initializable {
     public Label againstError;
     public Label reporterDateError;
     public Label detailsError;
+    public Label reportedDateError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

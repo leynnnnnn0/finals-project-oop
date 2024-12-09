@@ -1,25 +1,43 @@
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import model.Blotter;
 import model.User;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class BlotterController implements Initializable {
     public MFXTableView<Blotter> table;
     public AnchorPane blottersIndexPane;
     public AnchorPane blotterCreatePane;
+    public MFXTextField referenceNumber;
+    public MFXTextField complainantReporter;
+    public MFXTextField against;
+    public MFXDatePicker reportedDate;
+    public TextArea details;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupTable();
         setTableData();
+        table.autosizeColumnsOnInitialization();
+
+        Random random = new Random();
+        String reference = "BN-" + random.nextInt(111111, 999999);
+        referenceNumber.setText(reference);
+        referenceNumber.setDisable(true);
     }
 
     private void setTableData()
@@ -44,7 +62,7 @@ public class BlotterController implements Initializable {
         timeColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Blotter::getReported_time));
         notedByColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Blotter::getNoted_by));
 
-        table.getTableColumns().addAll(referenceNumberColumn, complainantColumn, againstColumn, dateColumn, timeColumn, notedByColumn);
+        table.getTableColumns().addAll(referenceNumberColumn, complainantColumn, againstColumn, dateColumn, notedByColumn);
 
     }
 
@@ -54,6 +72,19 @@ public class BlotterController implements Initializable {
     }
 
     public void createNewBlotter(ActionEvent actionEvent) {
+        Blotter blotter = new Blotter(
+                referenceNumber.getText(),
+                complainantReporter.getText(),
+                "Nathaniel Alvarez",
+                against.getText(),
+                Time.valueOf(LocalTime.now()),
+                Date.valueOf(reportedDate.getValue()),
+                details.getText()
+                );
+        blotter.create();
+        blottersIndexPane.setVisible(true);
+        blotterCreatePane.setVisible(false);
+
     }
 
     public void backToIndex(ActionEvent actionEvent) {

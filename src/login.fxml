@@ -22,15 +22,15 @@
             </ImageView>
             <Pane prefHeight="200.0" prefWidth="406.0">
                <children>
-                  <Label layoutX="146.0" layoutY="82.0" text="User Login" textFill="#5e24c3" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="82.0">
+                  <Label layoutX="171.0" layoutY="91.0" text="User Login" textFill="#5e24c3" AnchorPane.leftAnchor="171.0" AnchorPane.topAnchor="91.0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="64.0" layoutY="117.0" text="Hey, Enter your details to get sign in to your account" />
-                  <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email" layoutX="32.0" layoutY="170.0" prefHeight="48.0" prefWidth="353.0" />
-                  <MFXButton layoutX="32.0" layoutY="341.0" onAction="#login" prefHeight="35.0" prefWidth="353.0" styleClass="primary-button" text="Login" />
-                  <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password" layoutX="32.0" layoutY="264.0" prefHeight="48.0" prefWidth="353.0" />
+                  <Label layoutX="92.0" layoutY="118.0" text="Hey, Enter your details to get sign in to your account" />
+                  <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email" layoutX="32.0" layoutY="170.0" prefHeight="48.0" prefWidth="398.0" />
+                  <MFXButton layoutX="32.0" layoutY="341.0" onAction="#login" prefHeight="35.0" prefWidth="398.0" styleClass="primary-button" text="Login" />
+                  <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password" layoutX="32.0" layoutY="264.0" prefHeight="48.0" prefWidth="398.0" />
                   <Label fx:id="loginErrorMessage" layoutX="32.0" layoutY="218.0" textFill="RED">
                      <font>
                         <Font size="10.0" />

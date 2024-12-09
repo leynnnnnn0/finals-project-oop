@@ -37,6 +37,9 @@ public class BarangayCertificateController implements Initializable {
     }
 
     public void generateBarangayCertificate(ActionEvent actionEvent) {
+        if (!validateInputs()) {
+            return;
+        }
         try {
             Document document = new Document();
 
@@ -171,6 +174,26 @@ public class BarangayCertificateController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
+
+    private boolean validateInputs() {
+        boolean isValid = true;
+
+        fullNameError.setText("");
+        completeAddressError.setText("");
+
+        if (fullName.getText().trim().isEmpty()) {
+            fullNameError.setText("Full name is required");
+            isValid = false;
+        }
+
+        if (completeAddress.getText().trim().isEmpty()) {
+            completeAddressError.setText("Complete address is required");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
 
     private void showPdfConfirmationModal() {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);

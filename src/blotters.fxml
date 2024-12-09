@@ -4,11 +4,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.text.Font?>
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlotterController">
    <children>
       <AnchorPane prefHeight="546.0" prefWidth="819.0">
           <Label styleClass="page-title" text="Blotters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-
+          <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewBlotter" style="-fx-background-color: #2D60FF;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+              <font>
+                  <Font name="System Bold" size="12.0" />
+              </font>
+          </MFXButton>
+          <MFXTableView fx:id="table" layoutX="29.0" layoutY="75.0" prefHeight="438.0" prefWidth="752.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
       </AnchorPane>
    </children>
 </Pane>

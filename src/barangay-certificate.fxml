@@ -13,20 +13,20 @@
       <AnchorPane prefHeight="546.0" prefWidth="819.0">
           <Label styleClass="page-title" text="Generate Barangay Certificate" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
          <MFXTextField fx:id="fullName" floatMode="ABOVE" floatingText="Full Name" layoutX="20.0" layoutY="94.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="40.0" />
-         <Label fx:id="fullNameError" layoutX="37.0" layoutY="143.0" prefHeight="15.0" prefWidth="69.0" textFill="RED" AnchorPane.topAnchor="143.0">
+         <Label fx:id="fullNameError" layoutX="37.0" layoutY="143.0" prefHeight="15.0" prefWidth="269.0" textFill="RED" AnchorPane.topAnchor="143.0">
             <font>
                <Font size="10.0" />
             </font>
          </Label>
          <TextArea fx:id="completeAddress" layoutX="28.0" layoutY="193.0" prefHeight="99.0" prefWidth="751.0" />
-         <Label fx:id="completeAddressError" layoutX="37.0" layoutY="292.0" prefHeight="17.0" prefWidth="69.0" textFill="RED">
+         <Label fx:id="completeAddressError" layoutX="37.0" layoutY="292.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
             <font>
                <Font size="10.0" />
             </font>
          </Label>
          <Label layoutX="37.0" layoutY="168.0" text="Complete Address" />
          <TextArea fx:id="additionalCertification" layoutX="28.0" layoutY="342.0" prefHeight="99.0" prefWidth="751.0" />
-         <Label fx:id="additionalCertificationError" layoutX="37.0" layoutY="448.0" prefHeight="17.0" prefWidth="69.0" textFill="RED">
+         <Label fx:id="additionalCertificationError" layoutX="37.0" layoutY="448.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
             <font>
                <Font size="10.0" />
             </font>

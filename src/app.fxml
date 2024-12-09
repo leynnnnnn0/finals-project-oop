@@ -84,7 +84,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></MFXButton>
-                  <MFXButton fx:id="fileGenerationCenterText" alignment="BOTTOM_LEFT" onAction="#fileGenerationCenter" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Files Generator" textFill="#b1b1b1">
+                  <MFXButton fx:id="barangayCertificateText" alignment="BOTTOM_LEFT" onAction="#barangayCertificate" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Barangay Certificate" textFill="#b1b1b1">
                      <graphic>
                         <Label>
                            <graphic>

@@ -17,7 +17,7 @@ public class AppController implements Initializable {
     public MFXButton homeSidebarText;
     public MFXButton residentsSidebarText;
     public MFXButton usersSidebarText;
-    public MFXButton fileGenerationCenterText;
+    public MFXButton barangayCertificateText;
     @FXML
     private Label exit;
 
@@ -84,6 +84,12 @@ public class AppController implements Initializable {
         }
     }
 
-    public void fileGenerationCenter(ActionEvent actionEvent) {
+    public void barangayCertificate(ActionEvent actionEvent) throws IOException {
+        resetButtonStyles();
+        barangayCertificateText.setStyle("-fx-text-fill: #2D60FF; -fx-font-weight: bold;");
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("barangay-certificate.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 }

@@ -4,6 +4,12 @@
  -fx-font-family: "Poppins", serif;
 }
 
+.page-title {
+    -fx-text-fill: #2d60ff;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
 .sidebar-button {
     -fx-text-fill: #b1b1b1;
     -fx-font-weight: bold;

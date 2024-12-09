@@ -4,6 +4,7 @@ import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import model.Blotter;
 import model.User;
 
@@ -12,6 +13,8 @@ import java.util.ResourceBundle;
 
 public class BlotterController implements Initializable {
     public MFXTableView<Blotter> table;
+    public AnchorPane blottersIndexPane;
+    public AnchorPane blotterCreatePane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,5 +49,15 @@ public class BlotterController implements Initializable {
     }
 
     public void openCreateNewBlotter(ActionEvent actionEvent) {
+        blottersIndexPane.setVisible(false);
+        blotterCreatePane.setVisible(true);
+    }
+
+    public void createNewBlotter(ActionEvent actionEvent) {
+    }
+
+    public void backToIndex(ActionEvent actionEvent) {
+        blottersIndexPane.setVisible(true);
+        blotterCreatePane.setVisible(false);
     }
 }

@@ -27,7 +27,6 @@ public class Blotter extends Database<Blotter> {
         this.details = details;
     }
 
-    // Getters updated to return the correct types
     public String getReference_number() {
         return reference_number;
     }

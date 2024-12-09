@@ -18,6 +18,7 @@ public class AppController implements Initializable {
     public MFXButton residentsSidebarText;
     public MFXButton usersSidebarText;
     public MFXButton barangayCertificateText;
+    public MFXButton blottersText;
     @FXML
     private Label exit;
 
@@ -46,6 +47,9 @@ public class AppController implements Initializable {
         homeSidebarText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
         residentsSidebarText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
         usersSidebarText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
+        barangayCertificateText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
+        blottersText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
+
     }
 
     public void home(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -89,6 +93,15 @@ public class AppController implements Initializable {
         barangayCertificateText.setStyle("-fx-text-fill: #2D60FF; -fx-font-weight: bold;");
 
         Parent fxml = FXMLLoader.load(getClass().getResource("barangay-certificate.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
+    }
+
+    public void blotters(ActionEvent actionEvent) throws IOException {
+        resetButtonStyles();
+        blottersText.setStyle("-fx-text-fill: #2D60FF; -fx-font-weight: bold;");
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("blotters.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }

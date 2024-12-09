@@ -29,7 +29,7 @@ public class Main extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
 
-        Scene scene = new Scene(root, 1000, 600);
+        Scene scene = new Scene(root, 1050, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -46,7 +46,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(name)));
 
         Scene existingScene = primaryStage.getScene();
-        double width = existingScene != null ? existingScene.getWidth() : 1000;
+        double width = existingScene != null ? existingScene.getWidth() : 1050;
         double height = existingScene != null ? existingScene.getHeight() : 600;
 
         root.setOnMousePressed(event -> {

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppController">
    <top>
-      <Pane prefHeight="54.0" prefWidth="1000.0" style="-fx-background-color: #FFF; -fx-padding: 20 0;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="54.0" prefWidth="1050.0" style="-fx-background-color: #FFF; -fx-padding: 20 0;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="14.0" layoutY="19.0" text="Baranggay System" textFill="#343c6a">
                <font>
@@ -35,9 +35,9 @@
       </Pane>
    </top>
    <left>
-      <Pane prefHeight="546.0" prefWidth="200.0" style="-fx-background-color: #FFF;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="546.0" prefWidth="250.0" style="-fx-background-color: #FFF;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #fff;">
+            <VBox prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #fff;">
                <children>
                   <MFXButton fx:id="homeSidebarText" alignment="BOTTOM_LEFT" onAction="#home" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Home" textFill="#b1b1b1">
                      <graphic>
@@ -84,7 +84,22 @@
                      <font>
                         <Font size="16.0" />
                      </font></MFXButton>
-                  <MFXButton fx:id="barangayCertificateText" alignment="BOTTOM_LEFT" onAction="#barangayCertificate" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Barangay Certificate" textFill="#b1b1b1">
+                  <MFXButton fx:id="barangayCertificateText" alignment="BOTTOM_LEFT" onAction="#barangayCertificate" prefHeight="26.0" prefWidth="232.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Barangay Certificate" textFill="#b1b1b1">
+                     <graphic>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font></MFXButton>
+                  <MFXButton fx:id="blottersText" alignment="BOTTOM_LEFT" onAction="#blotters" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Blotters" textFill="#b1b1b1">
                      <graphic>
                         <Label>
                            <graphic>

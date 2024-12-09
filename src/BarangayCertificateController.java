@@ -5,12 +5,12 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 import java.awt.*;
@@ -27,6 +27,9 @@ public class BarangayCertificateController implements Initializable {
     public TextArea completeAddress;
     public TextArea additionalCertification;
     private static final String PDF_PATH = "C:/Users/natha/IdeaProjects/BarangaySystem/certificates/barangay-certificate.pdf";
+    public Label fullNameError;
+    public Label completeAddressError;
+    public Label additionalCertificationError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

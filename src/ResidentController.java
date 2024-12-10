@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.Blotter;
 import model.Resident;
 
 import java.io.IOException;
@@ -48,6 +49,14 @@ public class ResidentController implements Initializable {
 
     public Map<String, String> errors;
     public int errorsCounts = 0;
+    public AnchorPane residentViewPane;
+    public Label infolistFullName;
+    public Label infolistDateOfBirth;
+    public Label infolistSex;
+    public Label infolistContactNumber;
+    public Label infolistEmail;
+    public Label infolistNationality;
+    public Label infolistCompleteAddress;
 
 
     @Override
@@ -72,6 +81,8 @@ public class ResidentController implements Initializable {
 
 
         table.autosizeColumnsOnInitialization();
+
+
     }
 
     private void setTableData()
@@ -129,7 +140,20 @@ public class ResidentController implements Initializable {
 
         table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn, sexColumn, dobColumn, nationalityColumn);
 
+        table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+            Resident resident = table.getSelectionModel().getSelectedValues().getFirst();
+            infolistFullName.setText(resident.getFullName());
+            infolistDateOfBirth.setText(resident.getDate_of_birth().toString());
+            infolistSex.setText(resident.getSex());
+            infolistContactNumber.setText(resident.getContact_number());
+            infolistEmail.setText(resident.getEmail());
+            infolistNationality.setText(resident.getNationality());
+            infolistCompleteAddress.setText(resident.getComplete_address());
 
+            residentViewPane.setVisible(true);
+            residentIndexPane.setVisible(false);
+
+        });
 
     }
 
@@ -227,6 +251,7 @@ public class ResidentController implements Initializable {
     public void backToIndex(ActionEvent actionEvent) {
         residentIndexPane.setVisible(true);
         residentCreatePane.setVisible(false);
+        residentViewPane.setVisible(false);
     }
 
     public void setError(Label label, String message){

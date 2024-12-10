@@ -105,10 +105,70 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-            <Pane layoutX="20.0" layoutY="92.0" prefHeight="47.0" prefWidth="387.0">
+            <Pane layoutX="20.0" layoutY="90.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0">
                <children>
                   <Label text="Full Name" />
                   <Label layoutY="21.0" text="Test Full Name">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="413.0" layoutY="90.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="68.0" text="Date Of Birth" />
+                  <Label layoutY="21.0" text="Test Date of birth">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="15.0" layoutY="176.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0">
+               <children>
+                  <Label text="Sex" />
+                  <Label layoutY="21.0" text="Test sex">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="413.0" layoutY="176.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="180.0">
+               <children>
+                  <Label text="Contact Number" />
+                  <Label layoutY="21.0" text="Test Contact Number">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="15.0" layoutY="250.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="270.0">
+               <children>
+                  <Label text="Email" />
+                  <Label layoutY="21.0" text="Test Email">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="413.0" layoutY="250.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="270.0">
+               <children>
+                  <Label text="Nationality" />
+                  <Label layoutY="21.0" text="Test Nationality">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="25.0" layoutY="370.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="360.0">
+               <children>
+                  <Label text="Complete Address" />
+                  <Label layoutY="21.0" text="Test Complete Address">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

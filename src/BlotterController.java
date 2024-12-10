@@ -89,7 +89,7 @@ public class BlotterController implements Initializable {
 
         table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
             Blotter blotter = table.getSelectionModel().getSelectedValues().getFirst();
-            infolistReportedDate.setText(infolistReportedDate.getText() + " " + blotter.getReported_date());
+            infolistReportedDate.setText(reportedDate + " " + blotter.getReported_date());
             infolistReportedTime.setText(infolistReportedTime.getText() + " " + blotter.getReported_time());
             infolistComplainantReporter.setText(infolistComplainantReporter.getText() + " " + blotter.getComplainant_or_reporter());
             infolistAgainst.setText(infolistAgainst.getText() + " " + blotter.getAgainst());
@@ -264,8 +264,10 @@ public class BlotterController implements Initializable {
     }
 
     public void backToIndex(ActionEvent actionEvent) {
+
         blottersIndexPane.setVisible(true);
         blotterCreatePane.setVisible(false);
+        blotterViewPane.setVisible(false);
     }
 
 

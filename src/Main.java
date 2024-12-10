@@ -16,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Main.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("app.fxml")));
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         root.setOnMousePressed(event -> {

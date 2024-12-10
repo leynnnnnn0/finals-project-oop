@@ -30,7 +30,7 @@
         </children>
     </AnchorPane>
 
-    <AnchorPane fx:id="userCreatePane" prefHeight="546.0" prefWidth="819.0">
+    <AnchorPane fx:id="userCreatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
         <children>
             <Label text="Create New Resident" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                 <font>
@@ -109,5 +109,6 @@
             <MFXButton layoutX="662.0" layoutY="493.0" onAction="#backToIndex" text="Cancel" />
         </children>
     </AnchorPane>
+   <AnchorPane prefHeight="546.0" prefWidth="819.0" />
 
 </Pane>

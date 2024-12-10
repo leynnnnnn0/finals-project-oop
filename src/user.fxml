@@ -109,6 +109,58 @@
             <MFXButton layoutX="662.0" layoutY="493.0" onAction="#backToIndex" text="Cancel" />
         </children>
     </AnchorPane>
-   <AnchorPane prefHeight="546.0" prefWidth="819.0" />
+   <AnchorPane prefHeight="546.0" prefWidth="819.0">
+      <children>
+         <Pane layoutX="14.0" layoutY="61.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
+            <children>
+               <Label prefHeight="17.0" prefWidth="140.0" text="Full Name" />
+               <Label fx:id="infolistFullName" layoutY="21.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+         <Pane layoutX="418.0" layoutY="50.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+            <children>
+               <Label prefHeight="17.0" prefWidth="140.0" text="Phone Number" />
+               <Label fx:id="infolistPhoneNumber" layoutY="21.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+         <Pane layoutX="17.0" layoutY="138.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0">
+            <children>
+               <Label prefHeight="17.0" prefWidth="140.0" text="Email" />
+               <Label fx:id="infolistEmail" layoutY="21.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+         <Pane layoutX="421.0" layoutY="127.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+            <children>
+               <Label prefHeight="17.0" prefWidth="140.0" text="Passcode" />
+               <Label fx:id="infolistPasscode" layoutY="21.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+         <Pane layoutX="20.0" layoutY="239.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="250.0">
+            <children>
+               <Label prefHeight="17.0" prefWidth="140.0" text="Role" />
+               <Label fx:id="infolistRole" layoutY="21.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+      </children></AnchorPane>
 
 </Pane>

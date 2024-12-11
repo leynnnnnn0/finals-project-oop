@@ -16,7 +16,7 @@
       <!--  Index-->
       <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0">
           <Label styleClass="page-title" text="Blotters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-          <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewBlotter" style="-fx-background-color: #2D60FF;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+          <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewBlotter" style="-fx-background-color: #5e24c3;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
               <font>
                   <Font name="System Bold" size="12.0" />
               </font>

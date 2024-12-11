@@ -31,6 +31,11 @@ public class UserController implements Initializable {
     public Label lastNameError;
     public Label middleNameError;
     public Label firstNameError;
+    public Label infolistRole;
+    public Label infolistPasscode;
+    public Label infolistEmail;
+    public Label infolistPhoneNumber;
+    public Label infolistFullName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -17,7 +17,7 @@
 <!--      Index View-->
         <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
             <children>
-            <Label text="Residents" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Label text="Residents" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -34,7 +34,7 @@
 <!--     Create View-->
         <AnchorPane fx:id="residentCreatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
             <children>
-                <Label text="Create New Resident" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <Label text="Create New Resident" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
@@ -102,7 +102,7 @@
 <!--        View-->
       <AnchorPane fx:id="residentViewPane" prefHeight="546.0" prefWidth="819.0">
          <children>
-                <Label text="Resident Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <Label text="Resident Details" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>

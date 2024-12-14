@@ -5,6 +5,7 @@ import database.Database;
 import java.sql.*;
 
 public class User extends Database<User> {
+    private int id;
     private String first_name;
     private String middle_name;
     private String last_name;
@@ -13,14 +14,18 @@ public class User extends Database<User> {
     private String passcode;
     private boolean is_admin;
 
-    public User(String first_name, String middle_name, String last_name, String phone_number, String email, boolean is_admin) {
+    public int getId() {
+        return id;
+    }
+
+    public User(String first_name, String middle_name, String last_name, String phone_number, String email, boolean is_admin, String passcode) {
         this.first_name = first_name;
         this.middle_name = middle_name;
         this.last_name = last_name;
         this.phone_number = phone_number;
         this.email = email;
         this.is_admin = is_admin;
-        this.passcode = getLastName() + getPhoneNumber();
+        this.passcode = passcode;
     }
 
     @Override

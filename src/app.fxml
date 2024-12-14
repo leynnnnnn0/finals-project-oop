@@ -16,15 +16,20 @@
    <top>
       <Pane prefHeight="54.0" prefWidth="1050.0" style="-fx-background-color: #FFF; -fx-padding: 20 0;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="19.0" text="Baranggay System" textFill="#343c6a">
+            <Label layoutX="62.0" layoutY="19.0" text="Baranggay System" textFill="#343c6a">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Label fx:id="exit" layoutX="953.0" layoutY="19.0" text="Exit">
+            <Label fx:id="exit" layoutX="997.0" layoutY="19.0" text="Exit">
                <graphic>
                   <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
+            <ImageView fitHeight="29.0" fitWidth="43.0" layoutX="23.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/loginBanner.png" />
+               </image>
+            </ImageView>
          </children>
          <BorderPane.margin>
             <Insets />

@@ -77,6 +77,8 @@ public abstract class Database<T> {
                 fieldNames.add(field.getName());
             }
 
+            fieldNames.remove("id");
+
             String query = String.format(
                     "INSERT INTO %s (%s) VALUES (%s)",
                     getDatabaseName(),
@@ -107,18 +109,31 @@ public abstract class Database<T> {
         }
     }
 
-    public boolean update(String[] fields, String id) {
+    public boolean update(String id) {
         try {
+            Class<?> modelClass = this.getClass();
+            Field[] declaredFields = modelClass.getDeclaredFields();
+
+            List<String> fieldNames = new ArrayList<>();
+            for (Field field : declaredFields) {
+                if (!Modifier.isStatic(field.getModifiers()) && !Modifier.isFinal(field.getModifiers())) {
+                    fieldNames.add(field.getName());
+                }
+            }
+
+            fieldNames.remove("id");
+
+
             String query = String.format(
                     "UPDATE %s SET %s WHERE id = %s",
-                    this.getDatabaseName(),
-                    getPlaceholders(fields),
+                    getDatabaseName(),
+                    getPlaceholders(fieldNames.toArray(new String[0])),
                     id
             );
 
             preparedStatement = connection.prepareStatement(query);
 
-            setModelValues(preparedStatement, fields);
+            setModelValues(preparedStatement, fieldNames.toArray(new String[0]));
 
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;

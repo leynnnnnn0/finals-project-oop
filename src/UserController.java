@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import model.Resident;
 import model.User;
 
 public class UserController implements Initializable {
@@ -36,6 +37,22 @@ public class UserController implements Initializable {
     public Label infolistEmail;
     public Label infolistPhoneNumber;
     public Label infolistFullName;
+    public AnchorPane userViewPane;
+    public AnchorPane userEditPane;
+    public Label createUserText;
+    public User selectedUser;
+    public MFXTextField editFirstName;
+    public Label editFirstNameError;
+    public MFXTextField editMiddleName;
+    public Label editMiddleNameError;
+    public MFXTextField editLastName;
+    public Label editLastNameError;
+    public MFXTextField editContactNumber;
+    public Label editPhoneNumberError;
+    public MFXTextField editEmail;
+    public Label editEmailError;
+    public MFXFilterComboBox<String> editRolesComboBox;
+    public Label editRoleError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,6 +66,7 @@ public class UserController implements Initializable {
                 "Sub Admin"
         );
         rolesComboBox.setItems(rolesOption);
+        editRolesComboBox.setItems(rolesOption);
     }
 
     public void openCreateNewUserPage(ActionEvent actionEvent) {
@@ -71,6 +89,20 @@ public class UserController implements Initializable {
 
         table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn, roleColumn);
 
+        table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+            User user = table.getSelectionModel().getSelectedValues().getFirst();
+            selectedUser = user;
+            infolistFullName.setText(user.getFullName());
+            infolistPhoneNumber.setText(user.getPhoneNumber());
+            infolistEmail.setText(user.getEmail());
+            infolistRole.setText(user.getRole());
+
+            userViewPane.setVisible(true);
+            usersIndexPane.setVisible(false);
+            userCreatePane.setVisible(false);
+
+        });
+
     }
 
     private void setTableData()
@@ -82,6 +114,8 @@ public class UserController implements Initializable {
 
     public void backToIndex(ActionEvent actionEvent) {
         usersIndexPane.setVisible(true);
+        userViewPane.setVisible(false);
+        userEditPane.setVisible(false);
         userCreatePane.setVisible(false);
     }
 
@@ -97,7 +131,8 @@ public class UserController implements Initializable {
                 lastName.getText(),
                 contactNumber.getText(),
                 email.getText(),
-                is_admin
+                is_admin,
+                "password"
         );
         user.create();
         setTableData();
@@ -106,12 +141,10 @@ public class UserController implements Initializable {
     }
 
     private boolean validateInputs() {
-        // Clear previous error messages
         clearErrors();
 
         boolean isValid = true;
 
-        // First Name Validation
         if (firstName.getText().isEmpty()) {
             setError(firstNameError, "First name is required");
             isValid = false;
@@ -120,7 +153,6 @@ public class UserController implements Initializable {
             isValid = false;
         }
 
-        // Middle Name Validation (optional)
         if (!middleName.getText().isEmpty()) {
             if (!middleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
                 setError(middleNameError, "Middle name must be 1-50 characters, using only letters");
@@ -128,7 +160,6 @@ public class UserController implements Initializable {
             }
         }
 
-        // Last Name Validation
         if (lastName.getText().isEmpty()) {
             setError(lastNameError, "Last name is required");
             isValid = false;
@@ -137,13 +168,11 @@ public class UserController implements Initializable {
             isValid = false;
         }
 
-        // Role Validation
         if (rolesComboBox.getSelectedItem() == null) {
             setError(roleError, "Role is required");
             isValid = false;
         }
 
-        // Contact Number Validation
         if (contactNumber.getText().isEmpty()) {
             setError(phoneNumberError, "Contact number is required");
             isValid = false;
@@ -152,7 +181,6 @@ public class UserController implements Initializable {
             isValid = false;
         }
 
-        // Email Validation
         if (email.getText().isEmpty()) {
             setError(emailError, "Email is required");
             isValid = false;
@@ -175,5 +203,46 @@ public class UserController implements Initializable {
 
     private void setError(Label label, String message) {
         label.setText(message);
+    }
+
+    public void editUserDetails(ActionEvent actionEvent) {
+        editFirstName.setText(selectedUser.getFirstName());
+        editMiddleName.setText(selectedUser.getMiddleName());
+        editLastName.setText(selectedUser.getLastName());
+        editContactNumber.setText(selectedUser.getPhoneNumber());
+        editEmail.setText(selectedUser.getEmail());
+        editRolesComboBox.selectItem(selectedUser.getRole());
+
+        usersIndexPane.setVisible(false);
+        userViewPane.setVisible(false);
+        userCreatePane.setVisible(false);
+        userEditPane.setVisible(true);
+
+    }
+
+    public void deleteUser(ActionEvent actionEvent) {
+        selectedUser.delete(selectedUser.getId());
+        usersIndexPane.setVisible(true);
+        userViewPane.setVisible(false);
+        userEditPane.setVisible(false);
+        userCreatePane.setVisible(false);
+    }
+
+    public void updateUserDetails(ActionEvent actionEvent) {
+        System.out.println(editRolesComboBox.getSelectedItem());
+        boolean is_admin = editRolesComboBox.getSelectedItem().equals("Admin");
+        User user = new User(
+                editFirstName.getText(),
+                editMiddleName.getText(),
+                editLastName.getText(),
+                editContactNumber.getText(),
+                editEmail.getText(),
+                is_admin,
+                selectedUser.getPasscode()
+        );
+        user.update(selectedUser.getId() + "");
+        setTableData();
+        usersIndexPane.setVisible(true);
+        userEditPane.setVisible(false);
     }
 }

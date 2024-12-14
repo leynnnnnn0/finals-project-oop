@@ -15,7 +15,7 @@
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentController">
     <children>
 <!--      Index View-->
-        <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+        <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0">
             <children>
             <Label text="Residents" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
@@ -100,7 +100,7 @@
         </AnchorPane>
 
 <!--        View-->
-      <AnchorPane fx:id="residentViewPane" prefHeight="546.0" prefWidth="819.0">
+        <AnchorPane fx:id="residentViewPane" prefHeight="546.0" prefWidth="819.0" visible="false">
          <children>
                 <Label text="Resident Details" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
@@ -185,5 +185,4 @@
          </children>
       </AnchorPane>
     </children>
-
 </Pane>

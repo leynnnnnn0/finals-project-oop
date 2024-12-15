@@ -14,7 +14,7 @@
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlotterController">
    <children>
       <!--  Index-->
-      <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0">
+      <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
           <Label styleClass="page-title" text="Blotters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
           <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewBlotter" style="-fx-background-color: #5e24c3;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
               <font>
@@ -28,7 +28,7 @@
       <AnchorPane fx:id="blotterCreatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
          <children>
             <Label styleClass="page-title" text="Create Blotter" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-            <MFXTextField fx:id="referenceNumber" floatMode="ABOVE" floatingText="Reference Number" layoutX="20.0" layoutY="75.0" prefHeight="50.0" prefWidth="361.0" />
+            <MFXTextField fx:id="referenceNumber" floatMode="ABOVE" floatingText="Reference Number" layoutX="20.0" layoutY="75.0" prefHeight="50.0" prefWidth="361.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0" />
             <Label fx:id="referenceNumberError" layoutX="30.0" layoutY="124.0" prefHeight="17.0" prefWidth="74.0" textFill="RED">
                <font>
                   <Font size="10.0" />
@@ -46,7 +46,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <MFXDatePicker fx:id="reportedDate" floatMode="ABOVE" floatingText="Reported Date" layoutX="410.0" layoutY="176.0" prefHeight="50.0" prefWidth="367.0" />
+            <MFXDatePicker fx:id="reportedDate" floatMode="ABOVE" floatingText="Reported Date" layoutX="410.0" layoutY="176.0" prefHeight="50.0" prefWidth="367.0" AnchorPane.rightAnchor="42.0" />
             <Label fx:id="reportedDateError" layoutX="421.0" layoutY="226.0" prefHeight="17.0" prefWidth="274.0" textFill="RED">
                <font>
                   <Font size="10.0" />
@@ -106,13 +106,63 @@
          </children>
       </AnchorPane>
       <!--  Edit-->
-   <AnchorPane fx:id="blotterEditPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+   <AnchorPane fx:id="blotterEditPane" prefHeight="546.0" prefWidth="819.0">
    <children>
       <Label text="Edit Blotter Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+            <Pane layoutX="20.0" layoutY="75.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="412.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="140.0" text="Reference Number" />
+                  <Label fx:id="infolistFullName" layoutY="21.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="372.0" layoutY="74.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="140.0" text="Complainant/Reporter" />
+                  <Label fx:id="infolistFullName1" layoutY="21.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="176.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="140.0" text="Against" />
+                  <Label fx:id="infolistFullName2" layoutY="21.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="410.0" layoutY="176.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="140.0" text="Reported Date" />
+                  <Label fx:id="infolistFullName11" layoutY="21.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="280.0" prefHeight="103.0" prefWidth="759.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="140.0" text="Details" />
+                  <Label fx:id="infolistFullName21" layoutY="21.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
    </children>
    </AnchorPane>
    </children>

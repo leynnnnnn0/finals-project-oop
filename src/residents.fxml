@@ -184,5 +184,17 @@
              </MFXButton>
          </children>
       </AnchorPane>
+
+<!--        Edit -->
+        <!--  Edit-->
+        <AnchorPane fx:id="residentEditPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+            <children>
+                <Label text="Edit Resident Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
     </children>
 </Pane>

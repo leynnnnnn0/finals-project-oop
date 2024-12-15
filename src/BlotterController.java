@@ -48,6 +48,7 @@ public class BlotterController implements Initializable {
     public Label infolistComplainantReporter;
     public Label infolistAgainst;
     public Label infoListDetails;
+    public AnchorPane blotterEditPane;
 
 
     @Override

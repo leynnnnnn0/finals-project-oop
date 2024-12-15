@@ -105,5 +105,15 @@
             </MFXButton>
          </children>
       </AnchorPane>
+      <!--  Edit-->
+   <AnchorPane fx:id="blotterEditPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+   <children>
+      <Label text="Edit Blotter Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+   </AnchorPane>
    </children>
 </Pane>

@@ -222,6 +222,7 @@ public class UserController implements Initializable {
 
     public void deleteUser(ActionEvent actionEvent) {
         selectedUser.delete(selectedUser.getId());
+        setTableData();
         usersIndexPane.setVisible(true);
         userViewPane.setVisible(false);
         userEditPane.setVisible(false);

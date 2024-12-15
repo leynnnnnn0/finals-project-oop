@@ -57,6 +57,7 @@ public class ResidentController implements Initializable {
     public Label infolistEmail;
     public Label infolistNationality;
     public Label infolistCompleteAddress;
+    public AnchorPane residentEditPane;
 
 
     @Override

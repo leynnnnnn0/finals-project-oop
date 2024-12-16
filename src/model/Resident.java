@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.util.Date;
 
 public class Resident extends Database<Resident> {
+    private int id;
     private String first_name;
     private String middle_name;
     private String last_name;
@@ -16,6 +17,10 @@ public class Resident extends Database<Resident> {
     private String email;
     private String nationality;
     private String complete_address;
+
+    public int getId() {
+        return id;
+    }
 
     public Date getDate_of_birth() {
         return date_of_birth;

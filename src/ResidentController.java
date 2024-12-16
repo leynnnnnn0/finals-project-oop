@@ -1,3 +1,4 @@
+import helpers.ConfirmationDialogService;
 import io.github.palexdev.materialfx.controls.*;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import javafx.collections.FXCollections;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class ResidentController implements Initializable {
+public class ResidentController implements Initializable, ConfirmationDialogService {
     public Resident resident;
     public AnchorPane residentIndexPane;
     public AnchorPane residentCreatePane;
@@ -58,6 +59,24 @@ public class ResidentController implements Initializable {
     public Label infolistNationality;
     public Label infolistCompleteAddress;
     public AnchorPane residentEditPane;
+    public TextArea editCompleteAddress;
+    public MFXTextField editFirstName;
+    public MFXTextField editMiddleName;
+    public MFXTextField editLastName;
+    public MFXDatePicker editDateOfBirth;
+    public MFXTextField editContactNumber;
+    public MFXComboBox<String> editSex;
+    public MFXTextField editEmail;
+    public MFXFilterComboBox<String> editNationality;
+    public Label editFirstNameError;
+    public Label editMiddleNameError;
+    public Label editLastNameError;
+    public Label editDateOfBirthError;
+    public Label editContactNumberError;
+    public Label editSexError;
+    public Label editEmailError;
+    public Label editNationalityError;
+    public Label editCompleteAddressError;
 
 
     @Override
@@ -75,6 +94,8 @@ public class ResidentController implements Initializable {
         );
         nationalityComboBox.setItems(nationalityOptions);
         genderComboBox.setItems(genderOptions);
+        editNationality.setItems(nationalityOptions);
+        editSex.setItems(genderOptions);
 
         setupTable();
 
@@ -103,23 +124,30 @@ public class ResidentController implements Initializable {
         if(errorsCounts > 0){
             return;
         }
-        Resident newResident = new Resident(
-                firstName.getText(),
-                middleName.getText(),
-                lastName.getText(),
-                Date.valueOf(dateOfBirth.getValue()),
-                genderComboBox.getSelectedItem(),
-                contactNumber.getText(),
-                email.getText(),
-                nationalityComboBox.getSelectedItem(),
-                completeAddress.getText()
-        );
 
-        newResident.create();
-        clearInputFields();
-        setTableData();
-        residentIndexPane.setVisible(true);
-        residentCreatePane.setVisible(false);
+        showConfirmationDialog(
+                "Confirm Create",
+                "Are you sure you want to create a new resident?",
+                () -> {
+                    Resident newResident = new Resident(
+                            firstName.getText(),
+                            middleName.getText(),
+                            lastName.getText(),
+                            Date.valueOf(dateOfBirth.getValue()),
+                            genderComboBox.getSelectedItem(),
+                            contactNumber.getText(),
+                            email.getText(),
+                            nationalityComboBox.getSelectedItem(),
+                            completeAddress.getText()
+                    );
+
+                    newResident.create();
+                    clearInputFields();
+                    setTableData();
+                    residentIndexPane.setVisible(true);
+                    residentCreatePane.setVisible(false);
+                }
+        );
     }
 
     private void setupTable() {
@@ -252,6 +280,7 @@ public class ResidentController implements Initializable {
     public void backToIndex(ActionEvent actionEvent) {
         residentIndexPane.setVisible(true);
         residentCreatePane.setVisible(false);
+        residentEditPane.setVisible(false);
         residentViewPane.setVisible(false);
     }
 
@@ -260,4 +289,165 @@ public class ResidentController implements Initializable {
         label.setText(message);
     }
 
+    public void updateResidentDetails(ActionEvent actionEvent) {
+        if (!validateEditInputs()) {
+            return;
+        }
+
+        showConfirmationDialog(
+                "Confirm Update",
+                "Are you sure you want to update this resident's details?",
+                () -> {
+                    Resident updatedResident = new Resident(
+                            editFirstName.getText(),
+                            editMiddleName.getText(),
+                            editLastName.getText(),
+                            Date.valueOf(editDateOfBirth.getValue()),
+                            editSex.getSelectedItem(),
+                            editContactNumber.getText(),
+                            editEmail.getText(),
+                            editNationality.getSelectedItem(),
+                            editCompleteAddress.getText()
+                    );
+
+                    updatedResident.update(resident.getId() + "");
+
+                    setTableData();
+
+                    residentIndexPane.setVisible(true);
+                    residentEditPane.setVisible(false);
+                }
+        );
+    }
+
+    private boolean validateEditInputs() {
+        editFirstNameError.setText("");
+        editMiddleNameError.setText("");
+        editLastNameError.setText("");
+        editContactNumberError.setText("");
+        editDateOfBirthError.setText("");
+        editSexError.setText("");
+        editEmailError.setText("");
+        editNationalityError.setText("");
+        editCompleteAddressError.setText("");
+
+        boolean isValid = true;
+
+        if (editFirstName.getText().isEmpty()) {
+            editFirstNameError.setText("First name is required");
+            isValid = false;
+        } else if (!editFirstName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            editFirstNameError.setText("First name must be 2-50 characters, using only letters");
+            isValid = false;
+        }
+
+        if (!editMiddleName.getText().isEmpty()) {
+            if (!editMiddleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
+                editMiddleNameError.setText("Middle name must be 1-50 characters, using only letters");
+                isValid = false;
+            }
+        }
+
+        if (editLastName.getText().isEmpty()) {
+            editLastNameError.setText("Last name is required");
+            isValid = false;
+        } else if (!editLastName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            editLastNameError.setText("Last name must be 2-50 characters, using only letters");
+            isValid = false;
+        }
+
+        if (editDateOfBirth.getValue() == null) {
+            editDateOfBirthError.setText("Date of birth is required");
+            isValid = false;
+        } else {
+            LocalDate selectedDate = editDateOfBirth.getValue();
+            LocalDate today = LocalDate.now();
+            LocalDate minValidDate = today.minusYears(120);
+            LocalDate maxValidDate = today.minusYears(0);
+
+            if (selectedDate.isAfter(today)) {
+                editDateOfBirthError.setText("Date of birth cannot be in the future");
+                isValid = false;
+            } else if (selectedDate.isBefore(minValidDate)) {
+                editDateOfBirthError.setText("Date of birth seems unrealistic (max 120 years old)");
+                isValid = false;
+            } else if (selectedDate.isAfter(maxValidDate)) {
+                editDateOfBirthError.setText("You must be at least 18 years old");
+                isValid = false;
+            }
+        }
+
+        if (editSex.getSelectedItem() == null) {
+            editSexError.setText("Gender is required");
+            isValid = false;
+        }
+
+        if (editContactNumber.getText().isEmpty()) {
+            editContactNumberError.setText("Contact number is required");
+            isValid = false;
+        } else if (!editContactNumber.getText().matches("^(09|\\+639)\\d{9}$")) {
+            editContactNumberError.setText("Invalid phone number. Must start with 09 or +639 and be 10-12 digits");
+            isValid = false;
+        }
+
+        if (editEmail.getText().isEmpty()) {
+            editEmailError.setText("Email is required");
+            isValid = false;
+        } else if (!editEmail.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            editEmailError.setText("Invalid email format");
+            isValid = false;
+        }
+
+        if (editNationality.getSelectedItem() == null) {
+            editNationalityError.setText("Nationality is required");
+            isValid = false;
+        }
+
+        if (editCompleteAddress.getText().isEmpty()) {
+            editCompleteAddressError.setText("Complete address is required");
+            isValid = false;
+        } else if (editCompleteAddress.getText().length() < 10 || editCompleteAddress.getText().length() > 200) {
+            editCompleteAddressError.setText("Address must be between 10 and 200 characters");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    public void editResidentDetails(ActionEvent actionEvent) {
+        Resident selectedResident = table.getSelectionModel().getSelectedValues().getFirst();
+        resident = selectedResident;
+
+
+        editFirstName.setText(selectedResident.getFirst_name());
+        editMiddleName.setText(selectedResident.getMiddle_name());
+        editLastName.setText(selectedResident.getLast_name());
+        editDateOfBirth.setValue(Date.valueOf(selectedResident.getDate_of_birth().toString()).toLocalDate());
+        editSex.selectItem(selectedResident.getSex());
+        editContactNumber.setText(selectedResident.getContact_number());
+        editEmail.setText(selectedResident.getEmail());
+        editNationality.selectItem(selectedResident.getNationality());
+        editCompleteAddress.setText(selectedResident.getComplete_address());
+
+        residentIndexPane.setVisible(false);
+        residentViewPane.setVisible(false);
+        residentCreatePane.setVisible(false);
+        residentEditPane.setVisible(true);
+    }
+
+    public void deleteResident(ActionEvent actionEvent) {
+        showConfirmationDialog(
+                "Confirm Delete",
+                "Are you sure you want to delete this resident? This action cannot be undone.",
+                () -> {
+                    resident.delete(resident.getId());
+                    setTableData();
+
+                    residentIndexPane.setVisible(true);
+                    residentViewPane.setVisible(false);
+                    residentCreatePane.setVisible(false);
+                    residentEditPane.setVisible(false);
+                }
+        );
+    }
 }

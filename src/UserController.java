@@ -1,3 +1,4 @@
+import helpers.ConfirmationDialogService;
 import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
@@ -16,7 +17,7 @@ import java.util.ResourceBundle;
 import model.Resident;
 import model.User;
 
-public class UserController implements Initializable {
+public class UserController implements Initializable, ConfirmationDialogService {
     public AnchorPane usersIndexPane;
     public MFXTableView<User> table;
     public AnchorPane userCreatePane;
@@ -124,20 +125,26 @@ public class UserController implements Initializable {
             return;
         }
 
-        boolean is_admin = rolesComboBox.getSelectedItem().equals("Admin");
-        User user = new User(
-                firstName.getText(),
-                middleName.getText(),
-                lastName.getText(),
-                contactNumber.getText(),
-                email.getText(),
-                is_admin,
-                "password"
+        showConfirmationDialog(
+                "Confirm Create",
+                "Are you sure you want to create a new user?",
+                () -> {
+                    boolean is_admin = rolesComboBox.getSelectedItem().equals("Admin");
+                    User user = new User(
+                            firstName.getText(),
+                            middleName.getText(),
+                            lastName.getText(),
+                            contactNumber.getText(),
+                            email.getText(),
+                            is_admin,
+                            "password"
+                    );
+                    user.create();
+                    setTableData();
+                    usersIndexPane.setVisible(true);
+                    userCreatePane.setVisible(false);
+                }
         );
-        user.create();
-        setTableData();
-        usersIndexPane.setVisible(true);
-        userCreatePane.setVisible(false);
     }
 
     private boolean validateInputs() {
@@ -221,29 +228,105 @@ public class UserController implements Initializable {
     }
 
     public void deleteUser(ActionEvent actionEvent) {
-        selectedUser.delete(selectedUser.getId());
-        setTableData();
-        usersIndexPane.setVisible(true);
-        userViewPane.setVisible(false);
-        userEditPane.setVisible(false);
-        userCreatePane.setVisible(false);
+        showConfirmationDialog(
+                "Confirm Delete",
+                "Are you sure you want to delete this user? This action cannot be undone.",
+                () -> {
+                    selectedUser.delete(selectedUser.getId());
+                    setTableData();
+                    usersIndexPane.setVisible(true);
+                    userViewPane.setVisible(false);
+                    userEditPane.setVisible(false);
+                    userCreatePane.setVisible(false);
+                }
+        );
     }
 
     public void updateUserDetails(ActionEvent actionEvent) {
-        System.out.println(editRolesComboBox.getSelectedItem());
-        boolean is_admin = editRolesComboBox.getSelectedItem().equals("Admin");
-        User user = new User(
-                editFirstName.getText(),
-                editMiddleName.getText(),
-                editLastName.getText(),
-                editContactNumber.getText(),
-                editEmail.getText(),
-                is_admin,
-                selectedUser.getPasscode()
+        if (!validateEditInputs()) {
+            return;
+        }
+
+        showConfirmationDialog(
+                "Confirm Update",
+                "Are you sure you want to update this user's details?",
+                () -> {
+                    boolean is_admin = editRolesComboBox.getSelectedItem().equals("Admin");
+                    User user = new User(
+                            editFirstName.getText(),
+                            editMiddleName.getText(),
+                            editLastName.getText(),
+                            editContactNumber.getText(),
+                            editEmail.getText(),
+                            is_admin,
+                            selectedUser.getPasscode()
+                    );
+                    user.update(selectedUser.getId() + "");
+                    setTableData();
+                    usersIndexPane.setVisible(true);
+                    userEditPane.setVisible(false);
+                }
         );
-        user.update(selectedUser.getId() + "");
-        setTableData();
-        usersIndexPane.setVisible(true);
-        userEditPane.setVisible(false);
+    }
+
+    private boolean validateEditInputs() {
+        clearEditErrors();
+
+        boolean isValid = true;
+
+        if (editFirstName.getText().isEmpty()) {
+            setError(editFirstNameError, "First name is required");
+            isValid = false;
+        } else if (!editFirstName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            setError(editFirstNameError, "First name must be 2-50 characters, using only letters");
+            isValid = false;
+        }
+
+        if (!editMiddleName.getText().isEmpty()) {
+            if (!editMiddleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
+                setError(editMiddleNameError, "Middle name must be 1-50 characters, using only letters");
+                isValid = false;
+            }
+        }
+
+        if (editLastName.getText().isEmpty()) {
+            setError(editLastNameError, "Last name is required");
+            isValid = false;
+        } else if (!editLastName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
+            setError(editLastNameError, "Last name must be 2-50 characters, using only letters");
+            isValid = false;
+        }
+
+        if (editRolesComboBox.getSelectedItem() == null) {
+            setError(editRoleError, "Role is required");
+            isValid = false;
+        }
+
+        if (editContactNumber.getText().isEmpty()) {
+            setError(editPhoneNumberError, "Contact number is required");
+            isValid = false;
+        } else if (!editContactNumber.getText().matches("^(09|\\+639)\\d{9}$")) {
+            setError(editPhoneNumberError, "Invalid phone number. Must start with 09 or +639 and be 10-12 digits");
+            isValid = false;
+        }
+
+        if (editEmail.getText().isEmpty()) {
+            setError(editEmailError, "Email is required");
+            isValid = false;
+        } else if (!editEmail.getText().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            setError(editEmailError, "Invalid email format");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    private void clearEditErrors() {
+        editFirstNameError.setText("");
+        editMiddleNameError.setText("");
+        editLastNameError.setText("");
+        editRoleError.setText("");
+        editPhoneNumberError.setText("");
+        editEmailError.setText("");
     }
 }

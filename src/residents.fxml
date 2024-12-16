@@ -102,7 +102,17 @@
 <!--        View-->
         <AnchorPane fx:id="residentViewPane" prefHeight="546.0" prefWidth="819.0" visible="false">
          <children>
-                <Label text="Resident Details" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+             <MFXButton layoutX="672.0" layoutY="25.0" onAction="#editResidentDetails" style="-fx-background-color: #2D60FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+                 <font>
+                     <Font name="System Bold" size="12.0" />
+                 </font>
+             </MFXButton>
+             <MFXButton layoutX="676.0" layoutY="25.0" onAction="#deleteResident" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+                 <font>
+                     <Font name="System Bold" size="12.0" />
+                 </font>
+             </MFXButton>
+                <Label text="Resident Test" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
@@ -185,85 +195,73 @@
          </children>
       </AnchorPane>
 
-<!--        Edit -->
         <!--  Edit-->
         <AnchorPane fx:id="residentEditPane" prefHeight="546.0" prefWidth="819.0">
             <children>
-                <Label text="Edit Resident Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                <Label text="Edit Resident Details" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-            <Pane layoutX="399.0" layoutY="82.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.rightAnchor="40.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Date of Birth" />
-                  <Label fx:id="infolistFullName2" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="20.0" layoutY="82.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.leftAnchor="20.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Full Name" />
-                  <Label fx:id="infolistFullName1" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="413.0" layoutY="155.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.rightAnchor="40.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Contact Number" />
-                  <Label fx:id="infolistFullName21" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="20.0" layoutY="157.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.leftAnchor="20.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Sex" />
-                  <Label fx:id="infolistFullName11" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="412.0" layoutY="227.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.rightAnchor="40.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Nationality" />
-                  <Label fx:id="infolistFullName22" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="20.0" layoutY="227.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.leftAnchor="20.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Email" />
-                  <Label fx:id="infolistFullName12" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="20.0" layoutY="298.0" prefHeight="72.0" prefWidth="759.0" AnchorPane.leftAnchor="20.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="140.0" text="Complete Address" />
-                  <Label fx:id="infolistFullName121" layoutY="21.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+                <TextArea fx:id="editCompleteAddress" layoutX="20.0" layoutY="370.0" prefHeight="75.0" prefWidth="759.0" AnchorPane.bottomAnchor="104.39999999999998" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="370.0" />
+                <Label layoutX="23.0" layoutY="348.0" text="Complete Address" />
+                <MFXButton layoutX="724.0" layoutY="493.0" onAction="#updateResidentDetails" styleClass="primary-button" text="Update" />
+                <MFXButton layoutX="662.0" layoutY="493.0" onAction="#backToIndex" text="Cancel" />
+                <MFXTextField fx:id="editFirstName" floatMode="ABOVE" floatingText="First Name" layoutX="20.0" layoutY="82.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.leftAnchor="20.0" />
+                <MFXTextField fx:id="editMiddleName" floatMode="ABOVE" floatingText="Middle Name" layoutX="399.0" layoutY="82.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.rightAnchor="40.0" />
+                <MFXTextField fx:id="editLastName" floatMode="ABOVE" floatingText="Last Name" layoutX="20.0" layoutY="157.0" prefHeight="35.0" prefWidth="365.0" />
+                <MFXDatePicker fx:id="editDateOfBirth" floatMode="ABOVE" floatingText="Date of birth" layoutX="413.0" layoutY="155.0" prefHeight="35.0" prefWidth="365.0" AnchorPane.rightAnchor="40.39999999999998" />
+                <MFXTextField fx:id="editContactNumber" floatMode="ABOVE" floatingText="Contact Number" layoutX="412.0" layoutY="227.0" prefHeight="35.0" prefWidth="365.0" />
+                <MFXComboBox fx:id="editSex" floatMode="ABOVE" floatingText="Sex" layoutX="20.0" layoutY="227.0" prefHeight="35.0" prefWidth="365.0" />
+                <MFXTextField fx:id="editEmail" floatMode="ABOVE" floatingText="Email" layoutX="20.0" layoutY="298.0" prefHeight="35.0" prefWidth="365.0" />
+                <MFXFilterComboBox fx:id="editNationality" floatMode="ABOVE" floatingText="Nationality" layoutX="411.0" layoutY="298.0" prefHeight="35.0" prefWidth="366.0" />
+                <Label fx:id="editFirstNameError" layoutX="20.0" layoutY="117.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editMiddleNameError" layoutX="413.0" layoutY="117.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editLastNameError" layoutX="20.0" layoutY="193.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editDateOfBirthError" layoutX="413.0" layoutY="193.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editContactNumberError" layoutX="409.0" layoutY="265.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editSexError" layoutX="23.0" layoutY="265.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editEmailError" layoutX="23.0" layoutY="333.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editNationalityError" layoutX="413.0" layoutY="333.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Label fx:id="editCompleteAddressError" layoutX="18.0" layoutY="442.0" textFill="RED">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+
+
             </children>
         </AnchorPane>
     </children>

@@ -8,6 +8,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -17,9 +18,9 @@
 <!--      Index View-->
         <AnchorPane fx:id="residentIndexPane" prefHeight="546.0" prefWidth="819.0">
             <children>
-            <Label text="Residents" textFill="#5e24c3" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Label text="Residents" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
                 <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewResidentPage" style="-fx-background-color: #2D60FF;" text="Create New Resident" textFill="WHITE" AnchorPane.rightAnchor="40.0">
@@ -28,6 +29,7 @@
                     </font>
                 </MFXButton>
             <MFXTableView fx:id="table" layoutX="29.0" layoutY="75.0" prefHeight="438.0" prefWidth="752.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
+            <TextField fx:id="searchField" layoutX="20.0" layoutY="44.0" onKeyTyped="#search" prefHeight="25.0" prefWidth="168.0" promptText="Search..." />
             </children>
         </AnchorPane>
 

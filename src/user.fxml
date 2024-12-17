@@ -6,6 +6,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,9 +17,9 @@
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserController">
     <AnchorPane fx:id="usersIndexPane" prefHeight="546.0" prefWidth="819.0">
         <children>
-            <Label layoutX="42.0" layoutY="38.0" text="Users" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Label layoutX="42.0" layoutY="38.0" text="Users" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                 <font>
-                    <Font name="System Bold" size="24.0" />
+                    <Font name="System Bold" size="12.0" />
                 </font>
             </Label>
             <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewUserPage" style="-fx-background-color: #2D60FF;" text="Create New User" textFill="WHITE" AnchorPane.rightAnchor="40.0">
@@ -27,6 +28,7 @@
                 </font>
             </MFXButton>
             <MFXTableView fx:id="table" layoutX="29.0" layoutY="75.0" prefHeight="438.0" prefWidth="752.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="75.0" />
+         <TextField fx:id="searchField" layoutX="20.0" layoutY="44.0" onKeyTyped="#search" prefHeight="25.0" prefWidth="168.0" promptText="Search..." />
         </children>
     </AnchorPane>
 

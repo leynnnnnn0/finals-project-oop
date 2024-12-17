@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -54,6 +56,7 @@ public class UserController implements Initializable, ConfirmationDialogService 
     public Label editEmailError;
     public MFXFilterComboBox<String> editRolesComboBox;
     public Label editRoleError;
+    public TextField searchField;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -328,5 +331,18 @@ public class UserController implements Initializable, ConfirmationDialogService 
         editRoleError.setText("");
         editPhoneNumberError.setText("");
         editEmailError.setText("");
+    }
+
+    public void search(KeyEvent keyEvent) {
+        User userModel = new User();
+        ObservableList<User> allRecords = userModel.getAllRecords(User.class);
+
+        ObservableList<User> filteredRecords = allRecords.filtered(user ->
+                user.getFirstName().toLowerCase().contains(searchField.getText().toLowerCase()) ||
+                        user.getLastName().toLowerCase().contains(searchField.getText().toLowerCase())
+        );
+
+        table.setItems(filteredRecords);
+
     }
 }

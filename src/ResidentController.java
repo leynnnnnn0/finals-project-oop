@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Blotter;
 import model.Resident;
@@ -77,6 +78,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
     public Label editEmailError;
     public Label editNationalityError;
     public Label editCompleteAddressError;
+    public TextField searchField;
 
 
     @Override
@@ -449,5 +451,17 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                     residentEditPane.setVisible(false);
                 }
         );
+    }
+
+    public void search(KeyEvent keyEvent) {
+        Resident residentModel = new Resident();
+        ObservableList<Resident> allRecords = residentModel.getAllRecords(Resident.class);
+
+        ObservableList<Resident> filteredRecords = allRecords.filtered(resident ->
+                resident.getFirst_name().toLowerCase().contains(searchField.getText().toLowerCase()) ||
+                        resident.getLast_name().toLowerCase().contains(searchField.getText().toLowerCase())
+        );
+
+        table.setItems(filteredRecords);
     }
 }

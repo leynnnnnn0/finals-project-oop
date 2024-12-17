@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserController">
-    <AnchorPane fx:id="usersIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+    <AnchorPane fx:id="usersIndexPane" prefHeight="546.0" prefWidth="819.0">
         <children>
             <Label layoutX="42.0" layoutY="38.0" text="Users" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                 <font>
@@ -190,7 +190,7 @@
         </children>
     </AnchorPane>
 
-    <AnchorPane fx:id="userViewPane" prefHeight="546.0" prefWidth="819.0">
+    <AnchorPane fx:id="userViewPane" prefHeight="546.0" prefWidth="819.0" visible="false">
       <children>
          <Pane layoutX="20.0" layoutY="82.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="82.0">
             <children>

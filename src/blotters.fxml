@@ -14,7 +14,7 @@
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlotterController">
    <children>
       <!--  Index-->
-      <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+      <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0">
           <Label styleClass="page-title" text="Blotters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
           <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateNewBlotter" style="-fx-background-color: #5e24c3;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
               <font>
@@ -106,7 +106,7 @@
          </children>
       </AnchorPane>
       <!--  Edit-->
-   <AnchorPane fx:id="blotterEditPane" prefHeight="546.0" prefWidth="819.0">
+   <AnchorPane fx:id="blotterEditPane" prefHeight="546.0" prefWidth="819.0" visible="false">
    <children>
       <Label text="Edit Blotter Details" textFill="#2d60ff" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
          <font>

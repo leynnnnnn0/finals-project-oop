@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentLayoutController">
+   <top>
+      <Pane prefHeight="54.0" prefWidth="1050.0" style="-fx-background-color: #FFF; -fx-padding: 20 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="62.0" layoutY="19.0" text="Baranggay System" textFill="#343c6a">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="exit" layoutX="997.0" layoutY="19.0" text="Exit">
+               <graphic>
+                  <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Label>
+            <ImageView fitHeight="29.0" fitWidth="43.0" layoutX="23.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/loginBanner.png" />
+               </image>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="546.0" prefWidth="250.0" style="-fx-background-color: #FFF;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #fff;">
+               <children>
+                  <MFXButton fx:id="dashboardSidebarText" alignment="BOTTOM_LEFT" onAction="#dashboard" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Dashboard" textFill="#b1b1b1">
+                     <graphic>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </MFXButton>
+
+                  <MFXButton fx:id="profileSidebarText" alignment="BOTTOM_LEFT" onAction="#profile" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="My Profile" textFill="#b1b1b1">
+                     <graphic>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </MFXButton>
+
+                  <MFXButton fx:id="blotterSidebarText" alignment="BOTTOM_LEFT" onAction="#blotter" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Blotters" textFill="#b1b1b1">
+                     <graphic>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </MFXButton>
+
+                  <MFXButton fx:id="barangayCertificateSidebarText" alignment="BOTTOM_LEFT" onAction="#barangayCertificate" prefHeight="26.0" prefWidth="250.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Barangay Certificates" textFill="#b1b1b1">
+                     <graphic>
+                        <Label>
+                           <graphic>
+                              <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </MFXButton>
+
+               </children>
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding>
+            </VBox>
+
+            <MFXButton alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="491.0" onAction="#logout" prefHeight="26.0" prefWidth="150.0" style="-fx-font-weight: bold;" styleClass="sidebar-button" text="Logout" textFill="#b1b1b1">
+               <graphic>
+                  <Label>
+                     <graphic>
+                        <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </graphic>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+
+
+
+
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Pane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="805.0" style="-fx-background-color: #F5F7FA;" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="contentArea" layoutX="31.0" prefHeight="546.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

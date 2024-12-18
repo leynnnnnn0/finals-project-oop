@@ -1,3 +1,4 @@
+import helpers.ConfirmationDialogService;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
@@ -27,7 +28,7 @@ import java.time.LocalTime;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class BlotterController implements Initializable {
+public class BlotterController implements Initializable, ConfirmationDialogService {
     public MFXTableView<Blotter> table;
     public AnchorPane blottersIndexPane;
     public AnchorPane blotterCreatePane;
@@ -140,17 +141,31 @@ public class BlotterController implements Initializable {
         if (!isValid) {
             return;
         }
-        Blotter blotter = new Blotter(
-                referenceNumber.getText(),
-                complainantReporter.getText(),
-                "Nathaniel Alvarez",
-                against.getText(),
-                Time.valueOf(LocalTime.now()),
-                Date.valueOf(reportedDate.getValue()),
-                details.getText()
-                );
-        blotter.create();
+        showConfirmationDialog(
+                "Confirm Create",
+                "Are you sure you want to create a new blotter?",
+                () -> {
+                    Blotter blotter = new Blotter(
+                            referenceNumber.getText(),
+                            complainantReporter.getText(),
+                            "Nathaniel Alvarez",
+                            against.getText(),
+                            Time.valueOf(LocalTime.now()),
+                            Date.valueOf(reportedDate.getValue()),
+                            details.getText()
+                    );
+                    blotter.create();
 
+                    createPdfDocument(blotter);
+
+
+                    blottersIndexPane.setVisible(true);
+                    blotterCreatePane.setVisible(false);
+                });
+
+    }
+
+    public void createPdfDocument(Blotter blotter){
         try {
             Document document = new Document();
 
@@ -257,11 +272,6 @@ public class BlotterController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        blottersIndexPane.setVisible(true);
-        blotterCreatePane.setVisible(false);
-
     }
 
     public void backToIndex(ActionEvent actionEvent) {

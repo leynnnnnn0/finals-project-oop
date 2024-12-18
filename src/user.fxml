@@ -23,7 +23,7 @@
                     <Font name="System Bold" size="12.0" />
                 </font>
             </MFXButton>
-            <MFXTableView fx:id="table" layoutX="29.0" layoutY="99.0" prefHeight="427.0" prefWidth="759.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="99.0"/>
+            <MFXTableView fx:id="table" layoutX="29.0" layoutY="99.0" prefHeight="427.0" prefWidth="759.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="99.0" />
          <TextField fx:id="searchField" layoutX="20.0" layoutY="59.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="168.0" promptText="Search..." />
         </children>
     </AnchorPane>

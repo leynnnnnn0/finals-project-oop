@@ -3,6 +3,7 @@ package model;
 import database.Database;
 
 public class BarangayCertificate extends Database<BarangayCertificate> {
+    private int id;
     private String full_name;
     private String complete_address;
     private String additional_certification;
@@ -16,6 +17,8 @@ public class BarangayCertificate extends Database<BarangayCertificate> {
         this.reason_for_request = reason_for_request;
         this.status = status;
     }
+
+    public BarangayCertificate(){}
 
     public String getFullName() {
         return full_name;
@@ -35,6 +38,10 @@ public class BarangayCertificate extends Database<BarangayCertificate> {
 
     public String getReasonForRequest() {
         return reason_for_request;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

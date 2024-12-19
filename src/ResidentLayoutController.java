@@ -38,6 +38,14 @@ public class ResidentLayoutController implements Initializable {
         dashboardSidebarText.setStyle("-fx-text-fill: #5e24c3; -fx-font-weight: bold;");
     }
 
+    public void logout(ActionEvent actionEvent) {
+        try{
+            Main.showLoginScreen();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     private void resetButtonStyles() {
         dashboardSidebarText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
         profileSidebarText.setStyle("-fx-text-fill: #b1b1b1; -fx-font-weight: bold;");
@@ -54,8 +62,6 @@ public class ResidentLayoutController implements Initializable {
         contentArea.getChildren().setAll(fxml);
     }
 
-    public void logout(ActionEvent actionEvent) {
-    }
 
 
 

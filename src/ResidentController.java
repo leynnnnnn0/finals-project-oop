@@ -99,6 +99,8 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
         editNationality.setItems(nationalityOptions);
         editSex.setItems(genderOptions);
 
+
+
         setupTable();
 
         setTableData();
@@ -140,7 +142,8 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                             contactNumber.getText(),
                             email.getText(),
                             nationalityComboBox.getSelectedItem(),
-                            completeAddress.getText()
+                            completeAddress.getText(),
+                            firstName.getText().trim().toLowerCase() + contactNumber.getText().substring(Math.max(0, contactNumber.getText().length() - 6))
                     );
 
                     newResident.create();

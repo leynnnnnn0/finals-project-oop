@@ -62,51 +62,96 @@
                     <children>
                         <Pane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="709.0" style="-fx-background-color: #D3D3D3;">
                             <children>
-                                <Label layoutX="80.0" layoutY="20.0" text="First Name:">
+                                <Label layoutX="80.0" layoutY="20.0" style="-fx-text-fill: gray;" text="First Name:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="80.0" layoutY="65.0" text="Middle Name:">
+                                <Label layoutX="78.0" layoutY="68.0" style="-fx-text-fill: gray;" text="Middle Name:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="80.0" layoutY="110.0" text="Last Name:">
+                                <Label layoutX="381.0" layoutY="20.0" style="-fx-text-fill: gray;" text="Last Name:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="80.0" layoutY="155.0" text="Date of Birth:">
+                                <Label layoutX="79.0" layoutY="155.0" style="-fx-text-fill: gray;" text="Date of Birth:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="380.0" layoutY="25.0" text="Gender:">
+                                <Label layoutX="78.0" layoutY="110.0" style="-fx-text-fill: gray;" text="Gender:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="380.0" layoutY="75.0" text="Contact Number:">
+                                <Label layoutX="380.0" layoutY="68.0" style="-fx-text-fill: gray;" text="Contact Number:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="380.0" layoutY="125.0" prefHeight="0.0" prefWidth="68.0" text="Email:">
+                                <Label layoutX="380.0" layoutY="110.0" prefHeight="0.0" prefWidth="68.0" style="-fx-text-fill: gray;" text="Email:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="380.0" layoutY="175.0" text="Nationality:">
+                                <Label layoutX="379.0" layoutY="154.0" style="-fx-text-fill: gray;" text="Nationality:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="80.0" layoutY="200.0" text="Complete Address:">
+                                <Label layoutX="80.0" layoutY="200.0" style="-fx-text-fill: gray;" text="Complete Address:">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="10.0" />
                                     </font>
                                 </Label>
+                        <Label fx:id="firstName" layoutX="80.0" layoutY="35.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastName" layoutX="382.0" layoutY="35.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="middleName" layoutX="78.0" layoutY="83.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="contactNumber" layoutX="382.0" layoutY="83.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="gender" layoutX="78.0" layoutY="125.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="email" layoutX="382.0" layoutY="125.0" prefHeight="20.0" prefWidth="276.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dateOfBirth" layoutX="78.0" layoutY="170.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nationality" layoutX="382.0" layoutY="170.0" prefHeight="15.0" prefWidth="158.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="completeAddress" layoutX="80.0" layoutY="215.0" prefHeight="20.0" prefWidth="568.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
                             </children>
                         </Pane>
                     </children>

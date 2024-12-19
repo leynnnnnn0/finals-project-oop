@@ -2,6 +2,7 @@ import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import model.Resident;
 import model.User;
 
 import java.net.URL;
@@ -23,6 +24,9 @@ public class AuthController implements Initializable {
         loginErrorMessage.setText("");
         passwordError.setText("");
         User user = new User();
+        Resident resident = new Resident();
+        resident.setEmail(email.getText());
+        resident.setPassword(password.getText());
         user.setEmail(email.getText());
         user.setPasscode(password.getText());
 
@@ -35,10 +39,19 @@ public class AuthController implements Initializable {
         if(user.getPasscode().isEmpty() || user.getEmail().isEmpty()){
             return;
         }
+        System.out.println(resident.getEmail() + " " + resident.getPassword());
+        Resident res = resident.auth();
+
         try{
             if (user.auth()) {
+                Main.setUser(user);
                 Main.showMainScreen();
-            } else {
+            }
+            else if(res.getFirst_name() != null){
+                Main.setResident(res);
+                Main.showResidentScreen();
+            }
+            else {
                 loginErrorMessage.setText("Invalid Login Credentials");
             }
         }catch (Exception e){

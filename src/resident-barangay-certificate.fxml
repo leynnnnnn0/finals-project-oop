@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
-<?import javafx.scene.text.Font?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentBarangayCertificateController">
-    <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0">
+    <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0" >
         <Label styleClass="page-title" text="My Barangay Certificates" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
         <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateBarangayCertificateRequest" style="-fx-background-color: #5e24c3;" text="Create New Certificate Request" textFill="WHITE" AnchorPane.rightAnchor="40.0">
             <font>
@@ -20,29 +23,23 @@
     </AnchorPane>
 
     <AnchorPane fx:id="createCertificatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
-        <Label styleClass="page-title" text="Generate Barangay Certificate" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-        <MFXTextField fx:id="fullName" floatMode="ABOVE" floatingText="Full Name" layoutX="20.0" layoutY="94.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="40.0" />
-        <Label fx:id="fullNameError" layoutX="37.0" layoutY="143.0" prefHeight="15.0" prefWidth="269.0" textFill="RED" AnchorPane.topAnchor="143.0">
+        <Label styleClass="page-title" text="Create Barangay Certificate Request" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+
+        <TextArea fx:id="additionalCertification" layoutX="20.0" layoutY="71.0" prefHeight="82.0" prefWidth="751.0" />
+        <Label fx:id="additionalCertificationError" layoutX="20.0" layoutY="153.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <TextArea fx:id="completeAddress" layoutX="28.0" layoutY="193.0" prefHeight="99.0" prefWidth="751.0" />
-        <Label fx:id="completeAddressError" layoutX="37.0" layoutY="292.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Label>
-        <Label layoutX="37.0" layoutY="168.0" text="Complete Address" />
-        <TextArea fx:id="additionalCertification" layoutX="28.0" layoutY="342.0" prefHeight="99.0" prefWidth="751.0" />
-        <Label fx:id="additionalCertificationError" layoutX="37.0" layoutY="448.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Label>
-        <Label layoutX="37.0" layoutY="317.0" text="Additional Certification" />
+        <Label layoutX="20.0" layoutY="53.0" text="Additional Certification" />
 
         <MFXButton layoutX="724.0" layoutY="493.0" onAction="#createBarangayCertificateRequest" styleClass="primary-button" text="Create" />
         <MFXButton layoutX="662.0" layoutY="493.0" onAction="#backToIndex" text="Cancel" />
+      <MFXTextField fx:id="reasonForRequest" floatMode="ABOVE" floatingText="Reason For Request" layoutX="20.0" layoutY="198.0" prefHeight="49.0" prefWidth="751.0" />
+      <Label fx:id="reasonForRequestError" layoutX="20.0" layoutY="248.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
     </AnchorPane>
 </Pane>

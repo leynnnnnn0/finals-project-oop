@@ -5,13 +5,22 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import io.github.palexdev.materialfx.controls.MFXTableColumn;
+import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import model.BarangayCertificate;
+import model.Blotter;
 
 import java.awt.*;
 import java.io.File;
@@ -30,10 +39,55 @@ public class BarangayCertificateController implements Initializable {
     public Label fullNameError;
     public Label completeAddressError;
     public Label additionalCertificationError;
+    public MFXTableView<BarangayCertificate> table;
+    public AnchorPane certificateIndexPane;
+    public TextField searchField;
+    public AnchorPane createCertificatePane;
+    public Label reasonForRequestError;
+    public MFXTextField reasonForRequest;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setupTable();
+        setTableData();
+        table.autosizeColumnsOnInitialization();
+    }
 
+    private void setTableData()
+    {
+        BarangayCertificate blotterModel = new BarangayCertificate();
+        ObservableList<BarangayCertificate> data = blotterModel.getAllRecords(BarangayCertificate.class);
+        table.setItems(data);
+    }
+
+    private void setupTable() {
+        MFXTableColumn<BarangayCertificate> id = new MFXTableColumn<>("Id");
+        MFXTableColumn<BarangayCertificate> fullName = new MFXTableColumn<>("Full Name");
+        MFXTableColumn<BarangayCertificate> completeAddress = new MFXTableColumn<>("Complete Address");
+        MFXTableColumn<BarangayCertificate> reasonForRequest = new MFXTableColumn<>("Reason For Request");
+        MFXTableColumn<BarangayCertificate> status = new MFXTableColumn<>("Status");
+
+        id.setRowCellFactory(_ -> new MFXTableRowCell<>(BarangayCertificate::getId));
+        fullName.setRowCellFactory(_ -> new MFXTableRowCell<>(BarangayCertificate::getFullName));
+        completeAddress.setRowCellFactory(_ -> new MFXTableRowCell<>(BarangayCertificate::getCompleteAddress));
+        reasonForRequest.setRowCellFactory(_ -> new MFXTableRowCell<>(BarangayCertificate::getReasonForRequest));
+        status.setRowCellFactory(_ -> new MFXTableRowCell<>(BarangayCertificate::getStatus));
+
+        table.getTableColumns().addAll(id, fullName, completeAddress, reasonForRequest, status);
+
+
+        table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+            BarangayCertificate barangayCertificate = table.getSelectionModel().getSelectedValues().getFirst();
+
+
+
+        });
+    }
+
+    public void openCreateBarangayCertificate(ActionEvent actionEvent){
+        certificateIndexPane.setVisible(false);
+        createCertificatePane.setVisible(true);
     }
 
     public void generateBarangayCertificate(ActionEvent actionEvent) {
@@ -180,6 +234,7 @@ public class BarangayCertificateController implements Initializable {
 
         fullNameError.setText("");
         completeAddressError.setText("");
+        reasonForRequest.setText("");
 
         if (fullName.getText().trim().isEmpty()) {
             fullNameError.setText("Full name is required");
@@ -188,6 +243,11 @@ public class BarangayCertificateController implements Initializable {
 
         if (completeAddress.getText().trim().isEmpty()) {
             completeAddressError.setText("Complete address is required");
+            isValid = false;
+        }
+
+        if (reasonForRequest.getText().trim().isEmpty()) {
+            reasonForRequestError.setText("Reason for request is required");
             isValid = false;
         }
 
@@ -237,5 +297,13 @@ public class BarangayCertificateController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public void search(KeyEvent keyEvent) {
+    }
+
+    public void backToIndex(ActionEvent actionEvent) {
+        createCertificatePane.setVisible(false);
+        certificateIndexPane.setVisible(true);
     }
 }

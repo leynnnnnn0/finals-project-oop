@@ -1,13 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentProfileController">
-    <Label>
-        My Profile
-    </Label>
+    <children>
+        <Label layoutX="399.0" layoutY="48.0" text="Republic of the Philippines">
+            <font>
+                <Font size="15.0" />
+            </font></Label>
+        <Label layoutX="441.0" layoutY="72.0" text="Region IV A">
+            <font>
+                <Font size="15.0" />
+            </font></Label>
+        <Label layoutX="369.0" layoutY="93.0" prefHeight="21.0" prefWidth="222.0" text="Barangay Government of Bacao 2">
+            <font>
+                <Font size="15.0" />
+            </font></Label>
+        <Label layoutX="349.0" layoutY="116.0" text="CITY GOVERNMENT OF CAVITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="450.0" layoutY="146.0" text="General Trias">
+            <font>
+                <Font size="13.0" />
+            </font></Label>
+        <Label layoutX="346.0" layoutY="187.0" text="BARANGAY RESIDENT BIO-PROFILE">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <StackPane layoutX="103.0" layoutY="48.0" prefHeight="166.0" prefWidth="166.0" style="-fx-background-color: A9A9A9;">
+            <children>
+                <ImageView fitHeight="158.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/userProfile.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+        <BorderPane layoutX="23.0" layoutY="243.0" prefHeight="293.0" prefWidth="752.0">
+            <top>
+                <StackPane prefHeight="6.0" prefWidth="752.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+            </top>
+            <right>
+                <BorderPane prefHeight="254.0" prefWidth="7.0" style="-fx-background-color: GRAY;" BorderPane.alignment="CENTER" />
+            </right>
+            <bottom>
+                <BorderPane prefHeight="7.0" prefWidth="752.0" style="-fx-background-color: GRAY;" BorderPane.alignment="CENTER" />
+            </bottom>
+            <left>
+                <BorderPane prefHeight="254.0" prefWidth="7.0" style="-fx-background-color: GRAY;" BorderPane.alignment="CENTER" />
+            </left>
+            <center>
+                <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Pane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="709.0" style="-fx-background-color: #D3D3D3;">
+                            <children>
+                                <Label layoutX="80.0" layoutY="20.0" text="First Name:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="80.0" layoutY="65.0" text="Middle Name:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="80.0" layoutY="110.0" text="Last Name:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="80.0" layoutY="155.0" text="Date of Birth:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="380.0" layoutY="25.0" text="Gender:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="380.0" layoutY="75.0" text="Contact Number:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="380.0" layoutY="125.0" prefHeight="0.0" prefWidth="68.0" text="Email:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="380.0" layoutY="175.0" text="Nationality:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="80.0" layoutY="200.0" text="Complete Address:">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </center>
+        </BorderPane>
+    </children>
 </Pane>

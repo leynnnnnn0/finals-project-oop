@@ -6,8 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentProfileController">
-    <Label>
-        Blotters
-    </Label>
+    <children>
+        <AnchorPane fx:id="blottersIndexPane" prefHeight="546.0" prefWidth="819.0">
+            <Label styleClass="page-title" text="My Blotters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateBlotterRequest" style="-fx-background-color: #5e24c3;" text="Create New Blotter" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </MFXButton>
+            <MFXTableView fx:id="table" layoutX="29.0" layoutY="99.0" prefHeight="427.0" prefWidth="759.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="99.0" />
+            <TextField fx:id="searchField" layoutX="20.0" layoutY="59.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="168.0" promptText="Search..." />
+        </AnchorPane>
+    </children>
 </Pane>

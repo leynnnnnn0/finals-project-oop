@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentBarangayCertificateController">
-    <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0" >
+    <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0">
         <Label styleClass="page-title" text="My Barangay Certificates" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
         <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateBarangayCertificateRequest" style="-fx-background-color: #5e24c3;" text="Create New Certificate Request" textFill="WHITE" AnchorPane.rightAnchor="40.0">
             <font>
@@ -42,4 +42,6 @@
          </font>
       </Label>
     </AnchorPane>
+
+
 </Pane>

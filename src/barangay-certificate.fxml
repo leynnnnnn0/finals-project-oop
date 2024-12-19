@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BarangayCertificateController">
-   <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+   <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0">
       <Label styleClass="page-title" text="Barangay Certificates" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateBarangayCertificate" style="-fx-background-color: #5e24c3;" text="Create New Certificate" textFill="WHITE" AnchorPane.rightAnchor="40.0">
          <font>
@@ -22,7 +22,7 @@
       <TextField fx:id="searchField" layoutX="20.0" layoutY="59.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="168.0" promptText="Search..." />
    </AnchorPane>
 
-      <AnchorPane fx:id="createCertificatePane" prefHeight="546.0" prefWidth="819.0">
+      <AnchorPane fx:id="createCertificatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
           <Label styleClass="page-title" text="Generate Barangay Certificate" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
          <MFXTextField fx:id="fullName" floatMode="ABOVE" floatingText="Full Name" layoutX="37.0" layoutY="75.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="31.0" />
          <Label fx:id="fullNameError" layoutX="37.0" layoutY="124.0" prefHeight="15.0" prefWidth="269.0" textFill="RED" AnchorPane.topAnchor="124.0">
@@ -53,4 +53,47 @@
          </font>
       </Label>
       </AnchorPane>
+
+   <AnchorPane fx:id="certificateViewPane" prefHeight="546.0" prefWidth="819.0" visible="false">
+      <children>
+         <MFXButton layoutX="672.0" layoutY="25.0" onAction="#editCertificateDetails" style="-fx-background-color: #2D60FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </MFXButton>
+         <MFXButton layoutX="676.0" layoutY="25.0" onAction="#deleteCertificate" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </MFXButton>
+
+         <Label layoutX="28.0" layoutY="26.0" styleClass="page-title" text="Certificate Details" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+         <Label layoutX="20.0" layoutY="66.0" style="-fx-text-fill: gray;" text="Full Name" />
+         <Label layoutX="17.0" layoutY="121.0" style="-fx-text-fill: gray;" text="Complete Address" />
+         <Label layoutX="20.0" layoutY="184.0" style="-fx-text-fill: gray;" text="Additional Certification" />
+         <Label layoutX="20.0" layoutY="255.0" style="-fx-text-fill: gray;" text="Reason for Request" />
+
+         <MFXButton layoutX="30.0" layoutY="499.0" onAction="#backToIndex" style="-fx-padding: 3 20 3 20;" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </MFXButton>
+         <Label fx:id="infolistFullName" layoutX="20.0" layoutY="84.0" prefHeight="18.0" prefWidth="751.0" />
+         <Label fx:id="infolistCompleteAddress" layoutX="20.0" layoutY="139.0" prefHeight="18.0" prefWidth="751.0" />
+         <Label fx:id="infolistAdditionalCertification" layoutX="20.0" layoutY="202.0" prefHeight="18.0" prefWidth="751.0" />
+         <Label fx:id="infolistReasonForRequest" layoutX="20.0" layoutY="273.0" prefHeight="18.0" prefWidth="751.0" />
+         <Label layoutX="20.0" layoutY="319.0" style="-fx-text-fill: gray;" text="Status" />
+         <Label fx:id="infolistStatus" layoutX="20.0" layoutY="337.0" prefHeight="18.0" prefWidth="751.0" />
+         <MFXButton fx:id="approveButton" layoutX="596.0" layoutY="25.0" onAction="#approveCertificate" style="-fx-background-color: green;" text="Approve" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </MFXButton>
+         <MFXButton fx:id="declineButton" layoutX="520.0" layoutY="25.0" onAction="#declineCertificate" style="-fx-background-color: yellow;" text="Decline" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </MFXButton>
+      </children>
+   </AnchorPane>
 </Pane>

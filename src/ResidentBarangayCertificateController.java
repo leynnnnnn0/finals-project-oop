@@ -27,6 +27,7 @@ public class ResidentBarangayCertificateController implements Initializable, Con
     public AnchorPane createCertificatePane;
     public MFXTextField reasonForRequest;
     public Label reasonForRequestError;
+    public AnchorPane certificateViewPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,8 +38,8 @@ public class ResidentBarangayCertificateController implements Initializable, Con
 
     private void setTableData()
     {
-        BarangayCertificate blotterModel = new BarangayCertificate();
-        ObservableList<BarangayCertificate> data = blotterModel.getAllRecords(BarangayCertificate.class);
+        BarangayCertificate barangayCertificate = new BarangayCertificate();
+        ObservableList<BarangayCertificate> data = barangayCertificate.getAllRecords(BarangayCertificate.class, " WHERE full_name = '" + Main.getResident().getFullName() + "'");
         table.setItems(data);
     }
 

@@ -1,13 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResidentDashboardController">
-    <Label>
-        Dashboard
-    </Label>
+    <children>
+        <Label layoutX="17.0" layoutY="15.0" styleClass="page-title" text="Barangay Dashboard" />
+        <Label layoutX="17.0" layoutY="48.0" text="Last week" textFill="#9c9292">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <AnchorPane layoutX="40.0" layoutY="90.0">
+            <children>
+                <AnchorPane prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+                    <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Statistics" textFill="#5e24c3">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="44.0" layoutY="41.0" text="Number of Residents" />
+                        <Label layoutX="18.0" layoutY="69.0" text="Population" textFill="#68656e">
+                            <font>
+                                <Font size="11.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="40.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+            <children>
+                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Population" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="300.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Residential" textFill="#5e24c3">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="56.0" layoutY="41.0" text="Vacant Areas " />
+                <Label layoutX="11.0" layoutY="69.0" text="Residential Areas" textFill="#68656e">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="560.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+            <children>
+                <Label layoutX="14.0" layoutY="14.0" text="Commercial" textFill="#5e24c3">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="69.0" text="Establishment" textFill="#68656e">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Label>
+                <Label layoutX="38.0" layoutY="41.0" text="Number of Establishments" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="300.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+            <children>
+                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Residential Areas" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="560.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
+            <children>
+                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Establishment" />
+            </children>
+        </AnchorPane>
+    </children>
 </Pane>

@@ -5,6 +5,8 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import helpers.ConfirmationDialogService;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -27,11 +29,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class BarangayCertificateController implements Initializable {
+public class BarangayCertificateController implements Initializable, ConfirmationDialogService {
     public MFXTextField fullName;
     public TextArea completeAddress;
     public TextArea additionalCertification;
@@ -45,6 +50,15 @@ public class BarangayCertificateController implements Initializable {
     public AnchorPane createCertificatePane;
     public Label reasonForRequestError;
     public MFXTextField reasonForRequest;
+    public AnchorPane certificateViewPane;
+    public Label infolistFullName;
+    public Label infolistCompleteAddress;
+    public Label infolistAdditionalCertification;
+    public BarangayCertificate barangayCertificate;
+    public Label infolistReasonForRequest;
+    public Label infolistStatus;
+    public MFXButton approveButton;
+    public MFXButton declineButton;
 
 
     @Override
@@ -52,6 +66,14 @@ public class BarangayCertificateController implements Initializable {
         setupTable();
         setTableData();
         table.autosizeColumnsOnInitialization();
+
+        if(barangayCertificate != null && !barangayCertificate.getStatus().equals("pending")){
+            declineButton.setVisible(false);
+            approveButton.setVisible(false);
+        }else {
+            declineButton.setVisible(true);
+            approveButton.setVisible(true);
+        }
     }
 
     private void setTableData()
@@ -79,8 +101,23 @@ public class BarangayCertificateController implements Initializable {
 
         table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
             BarangayCertificate barangayCertificate = table.getSelectionModel().getSelectedValues().getFirst();
+            infolistFullName.setText(barangayCertificate.getFullName());
+            infolistAdditionalCertification.setText(barangayCertificate.getAdditionalCertification());
+            infolistCompleteAddress.setText(barangayCertificate.getCompleteAddress());
+            infolistStatus.setText(barangayCertificate.getStatus());
+            infolistReasonForRequest.setText(barangayCertificate.getReasonForRequest());
+            this.barangayCertificate = barangayCertificate;
 
-
+            if(!barangayCertificate.getStatus().equals("pending")){
+                declineButton.setVisible(false);
+                approveButton.setVisible(false);
+            }else {
+                declineButton.setVisible(true);
+                approveButton.setVisible(true);
+            }
+            certificateViewPane.setVisible(true);
+            certificateIndexPane.setVisible(false);
+            createCertificatePane.setVisible(false);
 
         });
     }
@@ -305,5 +342,60 @@ public class BarangayCertificateController implements Initializable {
     public void backToIndex(ActionEvent actionEvent) {
         createCertificatePane.setVisible(false);
         certificateIndexPane.setVisible(true);
+        certificateViewPane.setVisible(false);
+    }
+
+    public void deleteCertificate(ActionEvent actionEvent) {
+        barangayCertificate.delete(barangayCertificate.getId());
+    }
+
+    public void editCertificateDetails(ActionEvent actionEvent) {
+    }
+
+    public void approveCertificate(ActionEvent actionEvent) {
+        showConfirmationDialog("Action Confirmation", "Are you sure you want to decline this certificate request?",
+                () -> {
+                    try{
+                        Connection connection = barangayCertificate.getConnection();
+                        String query = "UPDATE barangay_certificates SET status = ? WHERE id = ?";
+                        PreparedStatement preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setString(1, "approved");
+                        preparedStatement.setInt(2, barangayCertificate.getId());
+                        int rowsAffected = preparedStatement.executeUpdate();
+                        if(rowsAffected > 0){
+                            showSuccessNotification("Success!", "Request Approved.");
+                            infolistStatus.setText("approved");
+                            declineButton.setVisible(false);
+                            approveButton.setVisible(false);
+                        }
+                    }catch (SQLException e){
+                        System.out.println(e.getMessage());
+                    }
+                });
+    }
+
+    public void declineCertificate(ActionEvent actionEvent){
+        showConfirmationDialog("Action Confirmation", "Are you sure you want to decline this certificate request?",
+                () -> {
+                    Connection connection = barangayCertificate.getConnection();
+                    String query = "UPDATE barangay_certificates SET status = ? WHERE id = ?";
+                    PreparedStatement preparedStatement = null;
+                    try {
+                        preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setString(1, "declined");
+                        preparedStatement.setInt(2, barangayCertificate.getId());
+                        int rowsAffected = preparedStatement.executeUpdate();
+                        if(rowsAffected > 0){
+                            showSuccessNotification("Success!", "Request Declined.");
+                            infolistStatus.setText("declined");
+                            declineButton.setVisible(false);
+                            approveButton.setVisible(false);
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                });
+
     }
 }

@@ -29,7 +29,7 @@ public class BarangayCertificate extends Database<BarangayCertificate> {
     }
 
     public String getAdditionalCertification() {
-        return additional_certification;
+        return additional_certification == null ? "N/a" : additional_certification;
     }
 
     public String getStatus() {

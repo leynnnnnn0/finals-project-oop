@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -16,67 +17,61 @@
         </Label>
         <AnchorPane layoutX="40.0" layoutY="90.0">
             <children>
-                <AnchorPane prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-                    <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Statistics" textFill="#5e24c3">
-                            <font>
-                                <Font name="System Bold" size="15.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="44.0" layoutY="41.0" text="Number of Residents" />
-                        <Label layoutX="18.0" layoutY="69.0" text="Population" textFill="#68656e">
-                            <font>
-                                <Font size="11.0" />
-                            </font>
-                        </Label>
-                    </children>
+                <AnchorPane prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+               <children>
+                  <ImageView fitHeight="99.2" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/statistics.png" />
+                     </image>
+                  </ImageView>
+               </children>
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="40.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-            <children>
-                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Population" />
-            </children>
+        <AnchorPane layoutX="40.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <ImageView fitHeight="257.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/p-pie.png" />
+               </image>
+            </ImageView>
+         </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-            <children>
-                <Label layoutX="14.0" layoutY="14.0" text="Residential" textFill="#5e24c3">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="56.0" layoutY="41.0" text="Vacant Areas " />
-                <Label layoutX="11.0" layoutY="69.0" text="Residential Areas" textFill="#68656e">
-                    <font>
-                        <Font size="11.0" />
-                    </font>
-                </Label>
-            </children>
+        <AnchorPane layoutX="300.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <ImageView fitHeight="135.0" fitWidth="200.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/residential.png" />
+               </image>
+            </ImageView>
+         </children>
         </AnchorPane>
-        <AnchorPane layoutX="560.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-            <children>
-                <Label layoutX="14.0" layoutY="14.0" text="Commercial" textFill="#5e24c3">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="14.0" layoutY="69.0" text="Establishment" textFill="#68656e">
-                    <font>
-                        <Font size="11.0" />
-                    </font>
-                </Label>
-                <Label layoutX="38.0" layoutY="41.0" text="Number of Establishments" />
-            </children>
+        <AnchorPane layoutX="560.0" layoutY="90.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/establishment.png" />
+               </image>
+            </ImageView>
+         </children>
         </AnchorPane>
-        <AnchorPane layoutX="300.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-            <children>
-                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Residential Areas" />
-            </children>
+        <AnchorPane layoutX="300.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <ImageView fitHeight="257.0" fitWidth="200.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/r-pie.png" />
+               </image>
+            </ImageView>
+         </children>
         </AnchorPane>
-        <AnchorPane layoutX="560.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: #E5E4E2;">
-            <children>
-                <PieChart layoutY="14.0" prefHeight="182.0" prefWidth="162.0" title="Establishment" />
-            </children>
+        <AnchorPane layoutX="560.0" layoutY="230.0" prefHeight="257.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;">
+         <children>
+            <ImageView fitHeight="257.0" fitWidth="207.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/e-pie.png" />
+               </image>
+            </ImageView>
+         </children>
         </AnchorPane>
     </children>
 </Pane>

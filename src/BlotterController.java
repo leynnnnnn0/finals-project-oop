@@ -50,6 +50,8 @@ public class BlotterController implements Initializable, ConfirmationDialogServi
     public Label infolistAgainst;
     public Label infoListDetails;
     public AnchorPane blotterEditPane;
+    public Label infolistFullName;
+
 
 
     @Override

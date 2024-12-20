@@ -169,6 +169,7 @@ public abstract class Database<T>  {
             setModelValues(preparedStatement, fieldNames.toArray(new String[0]));
 
             int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println(rowsAffected);
             return rowsAffected > 0;
 
         } catch (SQLException | IllegalAccessException e) {

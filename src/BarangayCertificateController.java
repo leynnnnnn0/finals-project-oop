@@ -59,6 +59,15 @@ public class BarangayCertificateController implements Initializable, Confirmatio
     public Label infolistStatus;
     public MFXButton approveButton;
     public MFXButton declineButton;
+    public AnchorPane editCertificatePane;
+    public MFXTextField editFullName;
+    public Label editFullNameError;
+    public TextArea editCompleteAddress;
+    public Label editCompleteAddressError;
+    public TextArea editAdditionalCertification;
+    public Label editAdditionalCertificationError;
+    public Label editReasonForRequestError;
+    public MFXTextField editReasonForRequest;
 
 
     @Override
@@ -364,6 +373,13 @@ public class BarangayCertificateController implements Initializable, Confirmatio
     }
 
     public void editCertificateDetails(ActionEvent actionEvent) {
+        editCertificatePane.setVisible(true);
+        certificateViewPane.setVisible(false);
+
+        editFullName.setText(barangayCertificate.getFullName());
+        editAdditionalCertification.setText(barangayCertificate.getAdditionalCertification());
+        editCompleteAddress.setText(barangayCertificate.getCompleteAddress());
+        editReasonForRequest.setText(barangayCertificate.getReasonForRequest());
     }
 
     public void approveCertificate(ActionEvent actionEvent) {
@@ -411,5 +427,22 @@ public class BarangayCertificateController implements Initializable, Confirmatio
 
                 });
 
+    }
+
+    public void updateBarangayCertificate(ActionEvent actionEvent) {
+        showConfirmationDialog("Confirm Edit Action", "Are you sure you want to update the barangay certificate details?"
+                ,() -> {
+                    BarangayCertificate barangayCertificate = new BarangayCertificate(
+                            editFullName.getText(),
+                            editCompleteAddress.getText(),
+                            editAdditionalCertification.getText(),
+                            editReasonForRequest.getText(),
+                            this.barangayCertificate.getStatus()
+                    );
+                    barangayCertificate.update(barangayCertificate.getId() + "");
+                    editCertificatePane.setVisible(false);
+                    certificateIndexPane.setVisible(true);
+                    setTableData();
+                });
     }
 }

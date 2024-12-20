@@ -137,6 +137,7 @@ public class Resident extends Database<Resident> {
         this.email = email;
         this.nationality = nationality;
         this.complete_address = complete_address;
+        this.password = this.first_name + this.last_name;
     }
 
     public Resident(){}

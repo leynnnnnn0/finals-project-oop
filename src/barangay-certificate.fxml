@@ -11,6 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BarangayCertificateController">
+<!--   Index-->
    <AnchorPane fx:id="certificateIndexPane" prefHeight="546.0" prefWidth="819.0">
       <Label styleClass="page-title" text="Barangay Certificates" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <MFXButton layoutX="742.0" layoutY="25.0" onAction="#openCreateBarangayCertificate" style="-fx-background-color: #5e24c3;" text="Create New Certificate" textFill="WHITE" AnchorPane.rightAnchor="40.0">
@@ -21,7 +22,7 @@
       <MFXTableView fx:id="table" layoutX="29.0" layoutY="99.0" prefHeight="427.0" prefWidth="759.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="99.0" />
       <TextField fx:id="searchField" layoutX="20.0" layoutY="59.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="168.0" promptText="Search..." />
    </AnchorPane>
-
+<!--   Create-->
       <AnchorPane fx:id="createCertificatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
           <Label styleClass="page-title" text="Generate Barangay Certificate" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
          <MFXTextField fx:id="fullName" floatMode="ABOVE" floatingText="Full Name" layoutX="37.0" layoutY="75.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="31.0" />
@@ -53,7 +54,7 @@
          </font>
       </Label>
       </AnchorPane>
-
+<!--   View-->
    <AnchorPane fx:id="certificateViewPane" prefHeight="546.0" prefWidth="819.0" visible="false">
       <children>
          <MFXButton layoutX="672.0" layoutY="25.0" onAction="#editCertificateDetails" style="-fx-background-color: #2D60FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="40.0">
@@ -95,5 +96,37 @@
             </font>
          </MFXButton>
       </children>
+   </AnchorPane>
+<!--   Edit-->
+   <AnchorPane fx:id="editCertificatePane" prefHeight="546.0" prefWidth="819.0" visible="false">
+      <Label styleClass="page-title" text="Edit Barangay Certificate Details" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <MFXTextField fx:id="editFullName" floatMode="ABOVE" floatingText="Full Name" layoutX="37.0" layoutY="75.0" prefHeight="49.0" prefWidth="751.0" AnchorPane.rightAnchor="31.0" />
+      <Label fx:id="editFullNameError" layoutX="37.0" layoutY="124.0" prefHeight="15.0" prefWidth="269.0" textFill="RED" AnchorPane.topAnchor="124.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="editCompleteAddress" layoutX="37.0" layoutY="168.0" prefHeight="78.0" prefWidth="751.0" />
+      <Label fx:id="editCompleteAddressError" layoutX="37.0" layoutY="246.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="151.0" text="Complete Address" />
+      <TextArea fx:id="editAdditionalCertification" layoutX="37.0" layoutY="290.0" prefHeight="78.0" prefWidth="751.0" />
+      <Label fx:id="editAdditionalCertificationError" layoutX="37.0" layoutY="368.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="273.0" text="Additional Certification" />
+      <MFXButton layoutX="645.0" layoutY="501.0" onAction="#backToIndex" text="Cancel" />
+      <MFXButton layoutX="724.0" layoutY="481.0" onAction="#updateBarangayCertificate" styleClass="primary-button" text="Update" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0" />
+      <MFXTextField fx:id="editReasonForRequest" floatMode="ABOVE" floatingText="Reason For Request" layoutX="37.0" layoutY="416.0" prefHeight="49.0" prefWidth="751.0" />
+      <Label fx:id="editReasonForRequestError" layoutX="37.0" layoutY="465.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </AnchorPane>
 </Pane>

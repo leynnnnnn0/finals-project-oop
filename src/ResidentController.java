@@ -156,6 +156,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                     setTableData();
                     residentIndexPane.setVisible(true);
                     residentCreatePane.setVisible(false);
+                    showSuccessNotification("Success", "New Resident Created Successfully!");
                 }
         );
     }
@@ -180,6 +181,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
 
         table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
             Resident resident = table.getSelectionModel().getSelectedValues().getFirst();
+            this.resident = resident;
             infolistFullName.setText(resident.getFullName());
             infolistDateOfBirth.setText(resident.getDate_of_birth().toString());
             infolistContactNumber.setText(resident.getContact_number());
@@ -318,6 +320,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                             editNationality.getSelectedItem(),
                             editCompleteAddress.getText()
                     );
+                    updatedResident.setPassword(resident.getPassword());
 
                     updatedResident.update(resident.getId() + "");
 
@@ -456,6 +459,8 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                     residentViewPane.setVisible(false);
                     residentCreatePane.setVisible(false);
                     residentEditPane.setVisible(false);
+
+                    showSuccessNotification("Success", "Resident Deleted Successfully.");
                 }
         );
     }

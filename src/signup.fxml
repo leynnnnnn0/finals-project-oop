@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -34,85 +35,132 @@
                         </Label>
                         <Label layoutX="32.0" layoutY="60.0" text="Please fill in your details to create an account" />
 
-                        <GridPane layoutX="32.0" layoutY="100.0" prefWidth="398.0" hgap="10" vgap="2">
+                        <GridPane hgap="10" layoutX="32.0" layoutY="100.0" prefWidth="398.0" vgap="2">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="190.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="190.0" />
                             </columnConstraints>
 
                             <!-- First Name -->
-                            <MFXTextField fx:id="firstName" floatMode="ABOVE" floatingText="First Name*" prefWidth="190.0"
-                                          GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <Label fx:id="firstNameError" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                            <MFXTextField fx:id="firstName" floatMode="ABOVE" floatingText="First Name*" prefWidth="190.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="firstNameError" textFill="RED" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Middle Name -->
-                            <MFXTextField fx:id="middleName" floatMode="ABOVE" floatingText="Middle Name" prefWidth="190.0"
-                                          GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            <MFXTextField fx:id="middleName" floatMode="ABOVE" floatingText="Middle Name" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                             <!-- Last Name -->
-                            <MFXTextField fx:id="lastName" floatMode="ABOVE" floatingText="Last Name*" prefWidth="190.0"
-                                          GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                            <Label fx:id="lastNameError" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                            <MFXTextField fx:id="lastName" floatMode="ABOVE" floatingText="Last Name*" prefWidth="190.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                            <Label fx:id="lastNameError" textFill="RED" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Date of Birth -->
-                            <MFXDatePicker fx:id="dateOfBirth" floatMode="ABOVE" floatingText="Date of Birth*" prefWidth="190.0"
-                                           GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                            <MFXDatePicker fx:id="dateOfBirth" floatMode="ABOVE" floatingText="Date of Birth*" prefHeight="20.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                             <Label fx:id="dateOfBirthError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Gender -->
-                            <MFXComboBox fx:id="genderComboBox" floatMode="ABOVE" floatingText="Sex*" prefWidth="190.0"
-                                         GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                            <Label fx:id="genderError" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                            <MFXComboBox fx:id="genderComboBox" floatMode="ABOVE" floatingText="Sex*" prefWidth="190.0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                            <Label fx:id="genderError" textFill="RED" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Contact Number -->
-                            <MFXTextField fx:id="contactNumber" floatMode="ABOVE" floatingText="Contact Number*" prefWidth="190.0"
-                                          GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                            <MFXTextField fx:id="contactNumber" floatMode="ABOVE" floatingText="Contact Number*" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
                             <Label fx:id="contactNumberError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Email -->
-                            <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email*" prefWidth="190.0"
-                                          GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-                            <Label fx:id="emailError" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                            <MFXTextField fx:id="email" floatMode="ABOVE" floatingText="Email*" prefWidth="190.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+                            <Label fx:id="emailError" textFill="RED" GridPane.rowIndex="7" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Password -->
-                            <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password*" prefWidth="190.0"
-                                              GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+                            <MFXPasswordField fx:id="password" floatMode="ABOVE" floatingText="Password*" prefHeight="0.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
                             <Label fx:id="passwordError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Nationality -->
-                            <MFXComboBox fx:id="nationalityComboBox" floatMode="ABOVE" floatingText="Nationality*" prefWidth="190.0"
-                                         GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
-                            <Label fx:id="nationalityError" textFill="RED" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                            <MFXComboBox fx:id="nationalityComboBox" floatMode="ABOVE" floatingText="Nationality*" prefWidth="190.0" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+                            <Label fx:id="nationalityError" textFill="RED" GridPane.rowIndex="9" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Complete Address -->
-                            <MFXTextField fx:id="completeAddress" floatMode="ABOVE" floatingText="Complete Address*" prefWidth="190.0"
-                                          GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+                            <MFXTextField fx:id="completeAddress" floatMode="ABOVE" floatingText="Complete Address*" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
                             <Label fx:id="completeAddressError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.valignment="TOP">
                                 <font><Font size="10.0" /></font>
                             </Label>
 
                             <!-- Buttons (span both columns) -->
-                            <MFXButton onAction="#signup" prefHeight="35.0" prefWidth="390.0" styleClass="primary-button" text="Sign Up"
-                                       GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2" GridPane.valignment="BOTTOM" />
+                            <MFXButton onAction="#signup" prefHeight="35.0" prefWidth="390.0" styleClass="primary-button" text="Sign Up" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.valignment="BOTTOM" />
 
-                            <MFXButton onAction="#backToLogin" prefHeight="35.0" prefWidth="390.0" styleClass="secondary-button" text="Back to Login"
-                                       GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2" GridPane.valignment="BOTTOM" />
+                            <MFXButton onAction="#backToLogin" prefHeight="35.0" prefWidth="390.0" styleClass="secondary-button" text="Back to Login" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.valignment="BOTTOM" />
+                     <Label text="First name is required" textFill="RED" GridPane.rowIndex="1">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Last name is required" textFill="RED" GridPane.rowIndex="3">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Date of birth is required" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Gender is required" textFill="RED" GridPane.rowIndex="5">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Contact number is required" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Email is required" textFill="RED" GridPane.rowIndex="7">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Password is required" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Nationality is required" textFill="RED" GridPane.rowIndex="9">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <Label text="Complete address is required" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                     </Label>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints maxHeight="58.0" minHeight="1.0" prefHeight="19.0" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" />
+                        <RowConstraints maxHeight="58.0" minHeight="1.0" prefHeight="19.0" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" />
+                        <RowConstraints maxHeight="58.0" minHeight="1.0" prefHeight="19.0" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="40.0" />
+                        <RowConstraints maxHeight="58.0" minHeight="1.0" prefHeight="19.0" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
                         </GridPane>
                     </children>
                 </Pane>

@@ -142,7 +142,7 @@ public abstract class Database<T>  {
         }
     }
 
-    public boolean update(String id) {
+    public boolean update(int id) {
         try {
             Class<?> modelClass = this.getClass();
             Field[] declaredFields = modelClass.getDeclaredFields();

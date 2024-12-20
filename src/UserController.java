@@ -220,8 +220,9 @@ public class UserController implements Initializable, ConfirmationDialogService 
     }
 
     public void editUserDetails(ActionEvent actionEvent) {
+        String middleName = editMiddleName.getText() == null ? "" : editMiddleName.getText();
         editFirstName.setText(selectedUser.getFirstName());
-        editMiddleName.setText(selectedUser.getMiddleName());
+        editMiddleName.setText(middleName);
         editLastName.setText(selectedUser.getLastName());
         editContactNumber.setText(selectedUser.getPhoneNumber());
         editEmail.setText(selectedUser.getEmail());
@@ -270,7 +271,7 @@ public class UserController implements Initializable, ConfirmationDialogService 
                             is_admin,
                             selectedUser.getPasscode()
                     );
-                    user.update(selectedUser.getId() + "");
+                    user.update(selectedUser.getId());
                     setTableData();
 
                     showSuccessNotification("Success", "User Details Updated Successfully!");
@@ -291,13 +292,6 @@ public class UserController implements Initializable, ConfirmationDialogService 
         } else if (!editFirstName.getText().matches("^[a-zA-Z\\s]{2,50}$")) {
             setError(editFirstNameError, "First name must be 2-50 characters, using only letters");
             isValid = false;
-        }
-
-        if (!editMiddleName.getText().isEmpty()) {
-            if (!editMiddleName.getText().matches("^[a-zA-Z\\s]{1,50}$")) {
-                setError(editMiddleNameError, "Middle name must be 1-50 characters, using only letters");
-                isValid = false;
-            }
         }
 
         if (editLastName.getText().isEmpty()) {

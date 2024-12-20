@@ -365,11 +365,22 @@ public class BarangayCertificateController implements Initializable, Confirmatio
     public void backToIndex(ActionEvent actionEvent) {
         createCertificatePane.setVisible(false);
         certificateIndexPane.setVisible(true);
+        editCertificatePane.setVisible(false);
         certificateViewPane.setVisible(false);
     }
 
     public void deleteCertificate(ActionEvent actionEvent) {
-        barangayCertificate.delete(barangayCertificate.getId());
+        showConfirmationDialog("Confirm", "Are you sure you want to delete this barangay certificate?",
+                () -> {
+                    barangayCertificate.delete(barangayCertificate.getId());
+                    showSuccessNotification("Success", "Deleted Successfully!");
+                    setTableData();
+
+                    createCertificatePane.setVisible(false);
+                    certificateIndexPane.setVisible(true);
+                    editCertificatePane.setVisible(false);
+                    certificateViewPane.setVisible(false);
+                });
     }
 
     public void editCertificateDetails(ActionEvent actionEvent) {
@@ -429,20 +440,53 @@ public class BarangayCertificateController implements Initializable, Confirmatio
 
     }
 
+    private boolean validateEditInputs() {
+        boolean isValid = true;
+
+        editFullNameError.setText("");
+        editCompleteAddressError.setText("");
+        editReasonForRequestError.setText("");
+
+        if (editFullName.getText().trim().isEmpty()) {
+            editFullNameError.setText("Full name is required");
+            isValid = false;
+        }
+
+        if (editCompleteAddress.getText().trim().isEmpty()) {
+            editCompleteAddressError.setText("Complete address is required");
+            isValid = false;
+        }
+
+        if (editReasonForRequest.getText().trim().isEmpty()) {
+            editReasonForRequestError.setText("Reason for request is required");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
     public void updateBarangayCertificate(ActionEvent actionEvent) {
+        if (!validateEditInputs()) {
+            return;
+        }
         showConfirmationDialog("Confirm Edit Action", "Are you sure you want to update the barangay certificate details?"
                 ,() -> {
-                    BarangayCertificate barangayCertificate = new BarangayCertificate(
-                            editFullName.getText(),
-                            editCompleteAddress.getText(),
-                            editAdditionalCertification.getText(),
-                            editReasonForRequest.getText(),
-                            this.barangayCertificate.getStatus()
-                    );
-                    barangayCertificate.update(barangayCertificate.getId() + "");
-                    editCertificatePane.setVisible(false);
-                    certificateIndexPane.setVisible(true);
-                    setTableData();
+                    try{
+                        BarangayCertificate barangayCertificate = new BarangayCertificate(
+                                editFullName.getText(),
+                                editCompleteAddress.getText(),
+                                editAdditionalCertification.getText(),
+                                editReasonForRequest.getText(),
+                                this.barangayCertificate.getStatus()
+                        );
+                        barangayCertificate.update(this.barangayCertificate.getId());
+                        showSuccessNotification("Success", "Barangay Certificate Details Updated Successfully");
+                        editCertificatePane.setVisible(false);
+                        certificateIndexPane.setVisible(true);
+                        setTableData();
+                    }catch(Exception e){
+                        showErrorNotification("Error", e.getMessage());
+                    }
                 });
     }
 }

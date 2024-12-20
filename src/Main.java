@@ -42,6 +42,10 @@ public class Main extends Application {
         changeScene("resident-layout.fxml");
     }
 
+    public static void showSignupScreen() throws Exception {
+        changeScene("signup.fxml");
+    }
+
     public static void showMainScreen() throws Exception {
         changeScene("app.fxml");
     }

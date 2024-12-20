@@ -322,7 +322,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                     );
                     updatedResident.setPassword(resident.getPassword());
 
-                    updatedResident.update(resident.getId() + "");
+                    updatedResident.update(resident.getId());
 
                     setTableData();
 

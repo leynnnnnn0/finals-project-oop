@@ -23,6 +23,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.BarangayCertificate;
 import model.Blotter;
+import model.Resident;
 
 import java.awt.*;
 import java.io.File;
@@ -35,6 +36,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BarangayCertificateController implements Initializable, ConfirmationDialogService {
     public MFXTextField fullName;
@@ -67,6 +70,7 @@ public class BarangayCertificateController implements Initializable, Confirmatio
     public TextArea editAdditionalCertification;
     public Label editAdditionalCertificationError;
     public Label editReasonForRequestError;
+    private Timer searchTimer;
     public MFXTextField editReasonForRequest;
 
 
@@ -360,6 +364,30 @@ public class BarangayCertificateController implements Initializable, Confirmatio
     }
 
     public void search(KeyEvent keyEvent) {
+        try{
+            if (searchTimer != null) {
+                searchTimer.cancel();
+            }
+
+            searchTimer = new Timer();
+            searchTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    javafx.application.Platform.runLater(() -> {
+                        BarangayCertificate barangayCertificate = new BarangayCertificate();
+                        ObservableList<BarangayCertificate> allRecords = BarangayCertificateController.this.barangayCertificate.getAllRecords(BarangayCertificate.class);
+
+                        ObservableList<BarangayCertificate> filteredRecords = allRecords.filtered(resident ->
+                                resident.getFullName().toLowerCase().contains(searchField.getText().toLowerCase())
+                        );
+
+                        table.setItems(filteredRecords);
+                    });
+                }
+            }, 700);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void backToIndex(ActionEvent actionEvent) {

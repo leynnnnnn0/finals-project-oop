@@ -4,15 +4,70 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.Image?>
 <Pane prefHeight="546.0" prefWidth="819.0" stylesheets="@/Main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
     <AnchorPane fx:id="homeIndexPane" prefHeight="546.0" prefWidth="819.0">
       <children>
-         <Pane layoutX="38.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;" />
-         <Pane layoutX="532.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;" AnchorPane.rightAnchor="40.0" />
-         <Pane layoutX="302.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;" />
+         <Pane layoutX="38.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;">
+            <children>
+               <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@/images/agent.png" />
+                   </image>
+               </ImageView>
+               <Label layoutX="72.0" layoutY="21.0" prefHeight="20.0" prefWidth="126.0" text="Total Residents" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="residentsCount" layoutX="72.0" layoutY="40.0" prefHeight="17.0" prefWidth="204.0" text="0" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+            </children></Pane>
+         <Pane layoutX="532.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;" AnchorPane.rightAnchor="40.0">
+            <children>
+               <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="23.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" >
+                   <image>
+                       <Image url="@/images/blotter.png" />
+                   </image>
+               </ImageView>
+               <Label layoutX="76.0" layoutY="21.0" prefHeight="20.0" prefWidth="126.0" text="Total Certificates" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="certificatesCount" layoutX="76.0" layoutY="40.0" prefHeight="17.0" prefWidth="204.0" text="0" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+            </children></Pane>
+         <Pane layoutX="302.0" layoutY="33.0" prefHeight="98.0" prefWidth="214.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #5e24c3;">
+            <children>
+               <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="17.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" >
+                   <image>
+                       <Image url="@/images/certficate.png" />
+                   </image>
+               </ImageView>
+               <Label layoutX="74.0" layoutY="19.0" prefHeight="17.0" prefWidth="104.0" text="Total Blotters" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="blottersCount" layoutX="74.0" layoutY="38.0" prefHeight="17.0" prefWidth="204.0" text="0" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+            </children></Pane>
           <PieChart fx:id="demographicsPieChart" layoutX="38.0" layoutY="162.0" prefHeight="355.0" prefWidth="350.0" />
           <LineChart fx:id="populationLineChart" layoutX="288.0" layoutY="147.0" prefHeight="370.0" prefWidth="358.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0">
               <xAxis>

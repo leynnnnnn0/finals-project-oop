@@ -222,16 +222,16 @@
                </Label>
             </children>
          </Pane>
-         <Pane layoutX="421.0" layoutY="127.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
-            <children>
-               <Label prefHeight="17.0" prefWidth="140.0" text="Passcode" />
-               <Label fx:id="infolistPasscode" layoutY="21.0">
-                  <font>
-                     <Font name="System Bold" size="14.0" />
-                  </font>
-               </Label>
-            </children>
-         </Pane>
+<!--         <Pane layoutX="421.0" layoutY="127.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">-->
+<!--            <children>-->
+<!--               <Label prefHeight="17.0" prefWidth="140.0" text="Passcode" />-->
+<!--               <Label fx:id="infolistPasscode" layoutY="21.0">-->
+<!--                  <font>-->
+<!--                     <Font name="System Bold" size="14.0" />-->
+<!--                  </font>-->
+<!--               </Label>-->
+<!--            </children>-->
+<!--         </Pane>-->
          <Pane layoutX="20.0" layoutY="211.0" prefHeight="47.0" prefWidth="387.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="211.0">
             <children>
                <Label prefHeight="17.0" prefWidth="140.0" text="Role" />

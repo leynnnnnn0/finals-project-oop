@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Database<T> {
+public abstract class Database<T>  {
     private Connection connection = null;
     private PreparedStatement preparedStatement = null;
     protected abstract String getDatabaseName();
@@ -208,4 +208,6 @@ public abstract class Database<T> {
             }
         }
     }
+
+
 }

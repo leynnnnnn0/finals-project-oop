@@ -13,6 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import model.Blotter;
 import model.Resident;
 
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -28,6 +32,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
     public AnchorPane residentCreatePane;
     public MFXComboBox<String> genderComboBox;
     public MFXFilterComboBox<String> nationalityComboBox;
+    private Timer searchTimer;
 
     public TextField firstName;
     public MFXTableView<Resident> table;
@@ -159,7 +164,6 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
         MFXTableColumn<Resident> fullNameColumn = new MFXTableColumn<>("Full Name");
         MFXTableColumn<Resident> phoneNumberColumn = new MFXTableColumn<>("Contact Number");
         MFXTableColumn<Resident> emailColumn = new MFXTableColumn<>("Email");
-        MFXTableColumn<Resident> sexColumn = new MFXTableColumn<>("Sex");
         MFXTableColumn<Resident> dobColumn = new MFXTableColumn<>("Date of Birth");
         MFXTableColumn<Resident> nationalityColumn = new MFXTableColumn<>("Nationality");
 
@@ -168,21 +172,21 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
         phoneNumberColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Resident::getContact_number));
         emailColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Resident::getEmail));
         nationalityColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Resident::getNationality));
-        sexColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Resident::getSex));
+
         dobColumn.setRowCellFactory(_ -> new MFXTableRowCell<>(Resident::getDate_of_birth));
 
 
-        table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn, sexColumn, dobColumn, nationalityColumn);
+        table.getTableColumns().addAll(fullNameColumn, phoneNumberColumn, emailColumn, dobColumn, nationalityColumn);
 
         table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
             Resident resident = table.getSelectionModel().getSelectedValues().getFirst();
             infolistFullName.setText(resident.getFullName());
             infolistDateOfBirth.setText(resident.getDate_of_birth().toString());
-            infolistSex.setText(resident.getSex());
             infolistContactNumber.setText(resident.getContact_number());
             infolistEmail.setText(resident.getEmail());
             infolistNationality.setText(resident.getNationality());
             infolistCompleteAddress.setText(resident.getComplete_address());
+            infolistSex.setText(resident.getSex());
 
             residentViewPane.setVisible(true);
             residentIndexPane.setVisible(false);
@@ -457,14 +461,30 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
     }
 
     public void search(KeyEvent keyEvent) {
-        Resident residentModel = new Resident();
-        ObservableList<Resident> allRecords = residentModel.getAllRecords(Resident.class);
+        try{
+            if (searchTimer != null) {
+                searchTimer.cancel();
+            }
 
-        ObservableList<Resident> filteredRecords = allRecords.filtered(resident ->
-                resident.getFirst_name().toLowerCase().contains(searchField.getText().toLowerCase()) ||
-                        resident.getLast_name().toLowerCase().contains(searchField.getText().toLowerCase())
-        );
+            searchTimer = new Timer();
+            searchTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    javafx.application.Platform.runLater(() -> {
+                        Resident residentModel = new Resident();
+                        ObservableList<Resident> allRecords = residentModel.getAllRecords(Resident.class);
 
-        table.setItems(filteredRecords);
+                        ObservableList<Resident> filteredRecords = allRecords.filtered(resident ->
+                                resident.getFirst_name().toLowerCase().contains(searchField.getText().toLowerCase()) ||
+                                        resident.getLast_name().toLowerCase().contains(searchField.getText().toLowerCase())
+                        );
+
+                        table.setItems(filteredRecords);
+                    });
+                }
+            }, 500);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

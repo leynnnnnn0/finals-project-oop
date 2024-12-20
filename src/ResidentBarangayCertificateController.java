@@ -104,8 +104,8 @@ public class ResidentBarangayCertificateController implements Initializable, Con
                 () -> {
                     Resident res = Main.getResident();
                     BarangayCertificate barangayCertificate = new BarangayCertificate(
-                            res.getFullName(),
-                            res.getComplete_address(),
+                            resident.getFullName(),
+                            resident.getComplete_address(),
                             additionalCertification,
                             reasonForRequest.getText().trim(),
                             "pending"

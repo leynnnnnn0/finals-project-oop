@@ -326,6 +326,8 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
 
                     setTableData();
 
+                    showSuccessNotification("Success", "Resident Details Updated Successfully!");
+
                     residentIndexPane.setVisible(true);
                     residentEditPane.setVisible(false);
                 }
@@ -487,7 +489,7 @@ public class ResidentController implements Initializable, ConfirmationDialogServ
                         table.setItems(filteredRecords);
                     });
                 }
-            }, 500);
+            }, 700);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

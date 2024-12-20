@@ -15,12 +15,15 @@ import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import model.Resident;
 import model.User;
 
 public class UserController implements Initializable, ConfirmationDialogService {
     public AnchorPane usersIndexPane;
+    private Timer searchTimer;
     public MFXTableView<User> table;
     public AnchorPane userCreatePane;
     public MFXFilterComboBox<String> rolesComboBox;
@@ -104,7 +107,6 @@ public class UserController implements Initializable, ConfirmationDialogService 
             userViewPane.setVisible(true);
             usersIndexPane.setVisible(false);
             userCreatePane.setVisible(false);
-
         });
 
     }
@@ -146,6 +148,8 @@ public class UserController implements Initializable, ConfirmationDialogService 
                     setTableData();
                     usersIndexPane.setVisible(true);
                     userCreatePane.setVisible(false);
+
+                    showSuccessNotification("Success", "New User Created Successfully!");
                 }
         );
     }
@@ -241,6 +245,8 @@ public class UserController implements Initializable, ConfirmationDialogService 
                     userViewPane.setVisible(false);
                     userEditPane.setVisible(false);
                     userCreatePane.setVisible(false);
+
+                    showSuccessNotification("Success", "User Deleted.");
                 }
         );
     }
@@ -266,6 +272,8 @@ public class UserController implements Initializable, ConfirmationDialogService 
                     );
                     user.update(selectedUser.getId() + "");
                     setTableData();
+
+                    showSuccessNotification("Success", "User Details Updated Successfully!");
                     usersIndexPane.setVisible(true);
                     userEditPane.setVisible(false);
                 }
@@ -334,15 +342,30 @@ public class UserController implements Initializable, ConfirmationDialogService 
     }
 
     public void search(KeyEvent keyEvent) {
-        User userModel = new User();
-        ObservableList<User> allRecords = userModel.getAllRecords(User.class);
+        try{
+            if (searchTimer != null) {
+                searchTimer.cancel();
+            }
 
-        ObservableList<User> filteredRecords = allRecords.filtered(user ->
-                user.getFirstName().toLowerCase().contains(searchField.getText().toLowerCase()) ||
-                        user.getLastName().toLowerCase().contains(searchField.getText().toLowerCase())
-        );
+            searchTimer = new Timer();
+            searchTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    javafx.application.Platform.runLater(() -> {
+                        User userModel = new User();
+                        ObservableList<User> allRecords = userModel.getAllRecords(User.class);
 
-        table.setItems(filteredRecords);
+                        ObservableList<User> filteredRecords = allRecords.filtered(user ->
+                                user.getFirstName().toLowerCase().contains(searchField.getText().toLowerCase()) ||
+                                        user.getLastName().toLowerCase().contains(searchField.getText().toLowerCase())
+                        );
 
+                        table.setItems(filteredRecords);
+                    });
+                }
+            }, 700);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
